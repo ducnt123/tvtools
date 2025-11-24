@@ -130,6 +130,18 @@
   </style>
 </head>
 <body>
+  
+  <!-- Thông báo xoay ngang thiết bị -->
+  <div id="rotateNotice" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.8); z-index:9999; color:#fff; backdrop-filter:blur(4px); padding:24px; text-align:center;">
+    <div style="max-width:320px; margin:auto; background:#111827; border:1px solid #374151; padding:20px; border-radius:16px;">
+      <h3 style="margin-top:0; font-size:18px;">Xoay ngang thiết bị</h3>
+      <p>Để bảng kênh hiển thị tốt nhất, vui lòng xoay thiết bị sang chế độ ngang.</p>
+      <button id="rotateOk" style="margin-top:12px; padding:10px 16px; border:none; border-radius:8px; background:#7dd3fc; color:#000; font-weight:600; cursor:pointer;">
+        OK
+      </button>
+    </div>
+  </div>
+
   <!-- Nút Home -->
 <a href="/tvtools" 
    style="
@@ -148,17 +160,6 @@
    ">
   ⟵ Home
 </a>
-  
-  <!-- Thông báo xoay ngang thiết bị -->
-  <div id="rotateNotice" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.8); z-index:9999; color:#fff; backdrop-filter:blur(4px); padding:24px; text-align:center;">
-    <div style="max-width:320px; margin:auto; background:#111827; border:1px solid #374151; padding:20px; border-radius:16px;">
-      <h3 style="margin-top:0; font-size:18px;">Xoay ngang thiết bị</h3>
-      <p>Để bảng kênh hiển thị tốt nhất, vui lòng xoay thiết bị sang chế độ ngang.</p>
-      <button id="rotateOk" style="margin-top:12px; padding:10px 16px; border:none; border-radius:8px; background:#7dd3fc; color:#000; font-weight:600; cursor:pointer;">
-        OK
-      </button>
-    </div>
-  </div>
   <div class="wrap">
     <header>
       <h1>Danh sách kênh truyền hình tại Việt Nam</h1>
