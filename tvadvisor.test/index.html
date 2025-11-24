@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>TV Advisor – Bảng kênh (CSV yes/no/free/addon)</title>
+  <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/xlsx@0.19.3/dist/xlsx.full.min.js"></script>
+  <style>
+    :root{
+      --bg:#0b0c0f; --panel:#13151a; --panel-2:#0f1116; --text:#f2f5f7;
+      --muted:#a0a8b6; --accent:#7dd3fc; --card:#1b1f29; --border:#2b3242;
+      --good:#22c55e; --bad:#ef4444; --info:#60a5fa; --addon:#f59e0b;
+      --sticky-left:260px; --slot-width:140px;
+    }
+    *{box-sizing:border-box}
+    html,body{
+      height:100%; margin:0; background:var(--bg); color:var(--text);
+      font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial,sans-serif;
+    }
+    a{color:var(--accent)}
+
+    .wrap{width:100%;max-width:none;margin:24px auto;padding:0 24px}
+    header{
+      display:flex;gap:16px;align-items:center;flex-wrap:wrap;
+      margin-bottom:16px;justify-content:center;
+    }
+    header h1{font-size:24px;margin:0;text-align:center;width:100%}
+
+    .card{
+      background:var(--panel);border:1px solid var(--border);border-radius:16px;
+      padding:12px;width:100%;box-shadow:0 0 12px rgba(0,0,0,0.4);
+    }
+    .toolbar{
+      display:grid;grid-template-columns:1fr auto;gap:8px;align-items:center;
+    }
+    .btn{
+      padding:10px 12px;border:1px solid var(--border);border-radius:12px;
+      background:var(--panel-2);color:var(--text);cursor:pointer;
+    }
+    .btn:hover{filter:brightness(1.08)}
+    .search{
+      padding:10px 12px;border:1px solid var(--border);border-radius:12px;
+      background:var(--panel-2);color:var(--text);width:100%;
+    }
+
+    .legend{
+      display:flex;gap:16px;align-items:center;color:var(--muted);
+      font-size:13px;margin-top:8px;flex-wrap:wrap;justify-content:center;
+    }
+    .tag{
+      display:inline-flex;align-items:center;gap:6px;padding:2px 8px;
+      border-radius:999px;border:1px solid var(--border);font-size:12px;
+    }
+    .tick{color:var(--good)}
+    .cross{color:var(--bad)}
+    .free{color:var(--info)}
+    .addon{color:var(--addon)}
+
+    .table-wrap{
+      margin-top:12px;border:1px solid var(--border);border-radius:16px;
+      overflow:auto;max-height:73vh;background:var(--card);width:100%;
+    }
+    table{border-collapse:separate;border-spacing:0;width:100%}
+    th,td{
+      border-bottom:1px solid var(--border);border-right:1px solid var(--border);
+      padding:10px 12px;white-space:nowrap;
+    }
+    th{
+      position:sticky;top:0;background:linear-gradient(#141821,#141821);z-index:3;
+    }
+    th.platform{
+      min-width:var(--slot-width);text-align:center;font-weight:600;color:#d7dce7;
+    }
+    th:first-child, td:first-child{
+      position:sticky;left:0;
+      background:linear-gradient(90deg,#151924 0%, #151924 60%, rgba(21,25,36,0.96) 100%);
+      z-index:2;
+    }
+    th:first-child{z-index:4}
+    tr:hover td{background-color:#111827}
+
+    .ch{display:flex;align-items:center;gap:10px}
+    .logo{
+      width:32px;height:32px;object-fit:contain;background:#0b1220;
+      border-radius:8px;border:1px solid var(--border);
+    }
+    .cell{display:flex;justify-content:center;align-items:center;gap:6px}
+    .pill{
+      font-size:11px;border:1px solid var(--border);padding:2px 6px;border-radius:999px;
+    }
+    .pill.free{border-color:#1d4ed8;color:#93c5fd;background:#0b193a}
+    .pill.addon{border-color:#b45309;color:#fbbf24;background:#2a1805}
+    .pill.iptv{border-color:#0ea5e9;color:#7dd3fc;background:#0b193a}
+    .pill.ott{border-color:#8b5cf6;color:#c4b5fd;background:#1b1033}
+    .muted{color:var(--muted)}
+
+    .filters{
+      display:flex;gap:8px;flex-wrap:wrap;margin-top:8px;justify-content:center;
+    }
+    .chip{
+      padding:6px 10px;border:1px solid var(--border);border-radius:999px;
+      background:#0f1117;color:#d7dce7;cursor:pointer;font-size:13px;
+    }
+    .chip.active{outline:2px solid var(--accent);}
+
+    .empty{padding:16px;color:var(--muted);text-align:center}
+    .err{
+      padding:12px;border:1px solid #7f1d1d;color:#fecaca;background:#1f0f0f;
+      border-radius:12px;margin-top:8px;white-space:pre-wrap;text-align:center;
+    }
+
+    /* Overlay nhắc xoay ngang */
+    .rotate-hint{
+      position:fixed;inset:0;display:none;
+      align-items:center;justify-content:center;
+      background:rgba(0,0,0,0.7);z-index:9999;
+    }
+    .rotate-hint-box{
+      background:#111827;border-radius:16px;padding:16px 20px;
+      border:1px solid var(--border);max-width:320px;width:80%;
+      text-align:center;box-shadow:0 10px 25px rgba(0,0,0,0.6);
+    }
+    .rotate-hint-box p{
+      margin:0 0 12px;font-size:14px;line-height:1.5;color:var(--text);
+    }
+    .rotate-hint-box .btn{
+      width:100%;justify-content:center;
+    }
+  </style>
+</head>
+<body>
+
+
+  <!-- Thông báo xoay ngang thiết bị -->
+  <div id="rotateNotice" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.8); z-index:9999; color:#fff; backdrop-filter:blur(4px); padding:24px; text-align:center;">
+    <div style="max-width:320px; margin:auto; background:#111827; border:1px solid #374151; padding:20px; border-radius:16px;">
+      <h3 style="margin-top:0; font-size:18px;">Xoay ngang thiết bị</h3>
+      <p>Để bảng kênh hiển thị tốt nhất, vui lòng xoay thiết bị sang chế độ ngang.</p>
+      <button id="rotateOk" style="margin-top:12px; padding:10px 16px; border:none; border-radius:8px; background:#7dd3fc; color:#000; font-weight:600; cursor:pointer;">
+        OK
+      </button>
+    </div>
+  </div>
+  <div class="wrap">
+    <header>
+      <h1>Danh sách kênh truyền hình tại Việt Nam</h1>
+    </header>
+
+    <div class="card">
+      <div class="toolbar">
+        <input id="search" class="search" placeholder="Tìm kênh… (ví dụ: Discovery, AXN)"/>
+        <button id="reload" class="btn" title="Nạp lại dữ liệu">↻ Nạp lại</button>
+      </div>
+
+      <!-- legend GIỮ NGUYÊN như bạn yêu cầu -->
+      <div class="legend">
+        <span class="tag tick">✓ = có sẵn</span>
+        <span class="tag cross">— = không có/chưa rõ</span>
+        
+        <span class="tag"><span class="tick">✓</span><span class="pill iptv">IPTV</span>Chỉ có trên IPTV</span>
+        <span class="tag"><span class="tick">✓</span><span class="pill ott">OTT</span>Chỉ có trên OTT</span>
+        <!--
+        <span class="tag free">F = miễn phí</span>
+        <span class="tag addon">＋ addon = gói mua thêm</span>
+        <span class="tag"><span class="tick">✓</span><span class="pill iptv">IPTV</span></span>
+        <span class="tag"><span class="tick">✓</span><span class="pill ott">OTT</span></span>
+        <span class="muted">CSV header: <b>Channel</b>, <b>Logo (optional URL)</b>, các cột nền tảng… rồi <b>Notes (optional)</b>. Giá trị ô: <code>yes/no/free/addon</code>.</span> -->
+      </div>
+
+      <div class="filters" id="filters"></div>
+
+      <!-- Checkbox ẩn kênh không có sẵn -->
+      <div style="display:flex;justify-content:flex-end;margin:6px 0 4px 0;">
+        <label class="btn" style="display:flex;align-items:center;gap:8px"
+               title="Ẩn tất cả kênh không có sẵn trên các nền tảng đang bật">
+          <input id="toggleUnavailable" type="checkbox" style="accent-color:#7dd3fc">
+          Ẩn kênh không có sẵn
+        </label>
+      </div>
+
+      <div class="table-wrap" id="tableWrap">
+        <div class="empty">Đang nạp dữ liệu…</div>
+      </div>
+      <div id="errorBox" class="err" style="display:none"></div>
+    </div>
+  </div>
+
+  <script>
+    const DATA_URL = 'tv_channels.csv'; // đổi nếu CSV ở đường dẫn khác
+
+    function normalize(v){
+      if(v == null) return 'no';
+      const s = String(v).trim().toLowerCase();
+      if(['yes','y','1','true','✓','check','x'].includes(s)) return 'yes';
+      if(s === 'yesiptv' || s === 'iptonly' || s === 'iptv-only') return 'yesiptv';
+      if(s === 'yesott'  || s === 'ottonly' || s === 'ott-only') return 'yesott';
+      if(['no','0','false','-',''].includes(s)) return 'no';
+      if(s === 'free') return 'free';
+      if(s === 'addon' || s === 'add-on') return 'addon';
+      return 'no';
+    }
+
+    const el = (s)=>document.querySelector(s);
+    const tableWrap = el('#tableWrap');
+    const errorBox = el('#errorBox');
+    let state = {
+      rows: [],
+      platforms: [],
+      filters: new Set(),
+      query: '',
+      hideUnavailable: false
+    };
+
+    el('#search').addEventListener('input', e => {
+      state.query = e.target.value.toLowerCase();
+      render();
+    });
+    el('#reload').addEventListener('click', () => loadData());
+    el('#toggleUnavailable').addEventListener('change', (e)=>{
+      state.hideUnavailable = e.target.checked;
+      render();
+    });
+    document.addEventListener('DOMContentLoaded', loadData);
+
+    // Kiểm tra kích thước màn hình và hiện thông báo xoay ngang
+    function checkMobileRotate(){
+      const notice = document.getElementById('rotateNotice');
+      const isMobile = window.innerWidth < 700; // ngưỡng kiểm tra thiết bị nhỏ
+
+      if(isMobile && window.innerHeight > window.innerWidth){
+        notice.style.display = 'flex';
+      } else {
+        notice.style.display = 'none';
+      }
+}
+
+window.addEventListener('load', checkMobileRotate);
+window.addEventListener('resize', checkMobileRotate);
+
+document.addEventListener('DOMContentLoaded', ()=>{
+  const okBtn = document.getElementById('rotateOk');
+  okBtn.addEventListener('click', ()=>{
+    document.getElementById('rotateNotice').style.display = 'none';
+  });
+});
+
+    async function loadData(){
+      tableWrap.innerHTML = '<div class="empty">Đang nạp dữ liệu…</div>';
+      errorBox.style.display = 'none';
+      try{
+        const url = new URL(DATA_URL, window.location.href).toString();
+        const isCSV = url.toLowerCase().endsWith('.csv');
+        const res = await fetch(
+          url + (url.includes('?') ? '&' : '?') + 'v=' + Date.now(),
+          {cache:'no-store'}
+        );
+        if(!res.ok) throw new Error('HTTP '+res.status);
+
+        let raw = [];
+        if(isCSV){
+          const text = await res.text();
+          const parsed = Papa.parse(text, {header:true, skipEmptyLines:true});
+          raw = parsed.data;
+        }else{
+          const buf = await res.arrayBuffer();
+          const wb = XLSX.read(buf, {type:'array'});
+          const ws = wb.Sheets[wb.SheetNames[0]];
+          raw = XLSX.utils.sheet_to_json(ws, {defval:''});
+        }
+
+        if(!raw.length){
+          tableWrap.innerHTML = '<div class="empty">Tệp dữ liệu rỗng.</div>';
+          return;
+        }
+
+        const cols = Object.keys(raw[0]);
+        const nameKey  = cols.find(h=>h.toLowerCase().includes('channel')) || cols[0];
+        const logoKey  = cols.find(h=>h.toLowerCase().includes('logo'));
+        const notesKey = cols.find(h=>h.toLowerCase().includes('note'));
+        const platformKeys = cols.filter(h => ![nameKey, logoKey, notesKey].includes(h));
+
+        state.platforms = platformKeys;
+state.rows = raw.map(r => ({
+  name:  r[nameKey],
+  logo:  logoKey  ? r[logoKey]  : '',
+  notes: notesKey ? r[notesKey] : '',
+  platforms: Object.fromEntries(platformKeys.map(k => [k, normalize(r[k])]))
+}));
+
+// Không chọn sẵn filter nào
+state.filters = new Set();
+
+renderFilters();
+render();
+      }catch(err){
+        tableWrap.innerHTML = '';
+        errorBox.textContent =
+          'Không đọc được dữ liệu từ ' + DATA_URL + ' — ' + err.message +
+          '\nHãy kiểm tra quyền truy cập (CORS), đường dẫn và định dạng tệp.';
+        errorBox.style.display = 'block';
+      }
+    }
+    /*
+    function renderFilters(){
+      const ctr = el('#filters');
+      ctr.innerHTML = '';
+      state.platforms.forEach(p => {
+        const b = document.createElement('button');
+        b.textContent = p;
+        b.className = 'chip active';
+        b.addEventListener('click', () => {
+          if(state.filters.has(p)) state.filters.delete(p);
+          else state.filters.add(p);
+          b.classList.toggle('active');
+          render();
+        });
+        ctr.appendChild(b);
+      });
+    } */
+
+    function renderFilters(){
+  const ctr=el('#filters');
+  ctr.innerHTML='';
+  state.platforms.forEach(p=>{
+    const b=document.createElement('button');
+    b.textContent=p;
+    b.className='chip';              // mặc định KHÔNG active
+
+    b.addEventListener('click',()=>{
+      if(state.filters.has(p)) {
+        state.filters.delete(p);     // đang bật -> tắt
+      } else {
+        state.filters.add(p);        // đang tắt -> bật
+      }
+      b.classList.toggle('active');  // đổi màu chip
+      render();
+    });
+
+    ctr.appendChild(b);
+  });
+}
+
+    function render(){
+  if(!state.rows.length){
+    tableWrap.innerHTML='<div class="empty">Chưa có dữ liệu.</div>';
+    return;
+  }
+
+  const activePlatforms = state.platforms.filter(p => state.filters.has(p));
+
+  // Nếu chưa chọn filter nào => dùng TẤT CẢ cột
+  const headerPlatforms    = activePlatforms.length ? activePlatforms : state.platforms;
+  const platformsForCheck  = activePlatforms.length ? activePlatforms : state.platforms;
+
+  const rows = state.rows.filter(r => {
+    if(!(r.name && r.name.toLowerCase().includes(state.query))) return false;
+    if(!state.hideUnavailable) return true;
+    // Ẩn kênh không có sẵn: giữ nếu ít nhất 1 nền tảng (trong bộ lọc đang bật, hoặc tất cả nếu chưa chọn) khác 'no'
+    return platformsForCheck.some(p => r.platforms[p] && r.platforms[p] !== 'no');
+  });
+
+  let html = '<table><thead><tr>' +
+             '<th style="min-width:var(--sticky-left)">Kênh</th>' +
+             headerPlatforms.map(p => `<th class="platform">${p}</th>`).join('') +
+             '</tr></thead><tbody>';
+
+  rows.forEach(r=>{
+    html += '<tr>';
+    html += '<td>'+
+              `<div class="ch">${r.logo?`<img class="logo" src="${r.logo}" alt="">`:''}`+
+              `<div><div>${r.name}</div>`+
+              `${r.notes?`<div class="muted" style="font-size:12px"><span>${escapeHtml(r.notes)}</span></div>`:''}`+
+              `</div></div>`+
+            '</td>';
+
+    headerPlatforms.forEach(p=>{
+      html += `<td><div class="cell">${renderCell(r.platforms[p])}</div></td>`;
+    });
+
+    html += '</tr>';
+  });
+
+  html += '</tbody></table>';
+  tableWrap.innerHTML = html;
+}
+
+    function renderCell(v){
+      if(v === 'yes')     return '<span class="tick">✓</span>';
+      if(v === 'yesiptv') return '<span class="tick">✓</span><span class="pill iptv" style="margin-left:6px">IPTV</span>';
+      if(v === 'yesott')  return '<span class="tick">✓</span><span class="pill ott"  style="margin-left:6px">OTT</span>';
+      if(v === 'free')    return '<span class="pill free">F</span>';
+      if(v === 'addon')   return '<span class="pill addon">Add-on</span>';
+      if(v === 'no')      return '<span class="cross">—</span>';
+      return '<span class="cross">—</span>';
+    }
+
+    function escapeHtml(str){
+      return String(str).replace(/[&<>"']/g, s => ({
+        '&':"&amp;", '<':"&lt;", '>':"&gt;", '"':"&quot;", "'":"&#39;"
+      }[s]));
+    }
+    
+
+    document.addEventListener('DOMContentLoaded', updateRotateHint);
+  </script>
+</body>
+</html>
