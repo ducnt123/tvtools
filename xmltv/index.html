@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>TV Guide – XMLTV</title>
+  <style>
+    :root{
+      --bg:#0b0c0f; --panel:#13151a; --panel-2:#0f1116; --text:#f2f5f7; --muted:#8c96a5;
+      --accent:#ff4dac; --accent-2:#2d92ff; --card:#20232b; --card-border:#2c3140; --now:#7dd3fc;
+      --leftcol:240px;
+      --slot-width:260px;
+    }
+    html,body{height:100%;margin:0;background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,Segoe UI,Roboto,Inter,"Helvetica Neue",Arial,sans-serif}
+    *{box-sizing:border-box}
+    a{color:var(--accent-2);text-decoration:none}
+    a:hover{text-decoration:underline}
+
+    .app{display:flex;flex-direction:column;height:100%}
+    .topbar{display:flex;gap:12px;align-items:center;padding:12px 16px;border-bottom:1px solid #222;
+      background:linear-gradient(180deg,var(--panel),var(--panel-2));position:sticky;top:0;z-index:1000}
+    .brand{display:flex;align-items:center;gap:10px;font-weight:700}
+    .brand .dot{width:10px;height:10px;border-radius:50%;background:var(--accent)}
+    .controls{display:flex;gap:12px;flex-wrap:wrap;margin-left:auto}
+    .controls input[type="url"], .controls input[type="text"], .controls select{background:#0c0f14;color:var(--text);
+      border:1px solid #283041;border-radius:10px;padding:10px 12px;min-width:260px}
+    .controls button{background:var(--accent);border:0;color:white;border-radius:10px;padding:10px 14px;font-weight:600;cursor:pointer}
+    .controls button.secondary{background:#1f2430;color:var(--text);border:1px solid #2f394a}
+
+    /* Nút info tròn với chữ i */
+    .icon-btn{
+      display:inline-flex;align-items:center;justify-content:center;
+      width:36px;height:36px;border-radius:999px;border:1px solid #2f394a;
+      background:#1a2130;color:#cfe1ff;font-weight:700;cursor:pointer
+    }
+    .icon-btn:hover{background:#212a3b}
+
+    .guide{display:grid;grid-template-columns: var(--leftcol) 1fr; height:calc(100vh - 64px); overflow:hidden}
+    .channels{position:sticky; left:0; z-index:30; background:var(--panel-2); border-right:1px solid #1e2431; overflow-y:auto}
+    .schedule{position:relative; overflow:auto; background:var(--panel)}
+
+    .chan-header{position:sticky; top:0; z-index:2; background:var(--panel-2); border-bottom:1px solid #1e2431; padding:10px; color:var(--muted); font-weight:600}
+    .chan-row{display:flex;align-items:center;gap:10px;padding:8px 10px;border-bottom:1px solid #141925;min-height:64px}
+    .chan-logo{width:28px;height:28px;object-fit:contain;filter:brightness(1.1)}
+    .chan-name{font-weight:600}
+
+    .sched-inner{position:relative}
+    .timeline{position:sticky; top:0; z-index:5; height:40px; width:6240px; border-bottom:1px solid #1e2431;
+      background:linear-gradient(180deg,var(--panel),#10131a)}
+    .ticks{display:grid; grid-auto-flow:column; grid-auto-columns: var(--slot-width)}
+    .tick{padding:10px 6px; color:#ffffff; font-size:15px; border-left:1px solid #1b2030; text-align:left}
+
+    .rows{position:relative}
+    .row-bg{position:absolute; left:0; right:0; height:64px; border-bottom:1px solid #141925; background:transparent}
+
+    .prog{position:absolute;height:56px;background:var(--card);border:1px solid var(--card-border);border-radius:12px;
+      padding:10px 12px;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;cursor:pointer;display:flex;align-items:center;gap:8px;}
+    .prog:hover{border-color:#3a4257;box-shadow:0 0 0 2px rgba(125,211,252,.15) inset}
+    .prog.live{border-color:var(--accent);box-shadow:0 0 0 2px rgba(255,77,172,.2) inset}
+
+    .now-line{position:absolute; top:0; width:2px; background:var(--now); height:100%; z-index:4; pointer-events:none}
+
+    dialog.sheet{width:min(720px,96vw);border:1px solid #2b3447;border-radius:16px;background:#0d1117;color:#fff;padding:0;overflow:hidden}
+    .sheet header{display:flex;gap:12px;align-items:center;padding:16px 16px;border-bottom:1px solid #202637;background:#0f131b}
+    .sheet .content{padding:16px;line-height:1.55}
+    .sheet .meta{display:flex;gap:8px;flex-wrap:wrap;color:var(--muted)}
+    .chip{padding:3px 8px;border-radius:999px;border:1px solid #2b3447}
+    .sheet button.close{margin-left:auto;background:#1a2130;border:1px solid #2b3447;color:#fff;padding:8px 12px;border-radius:10px;cursor:pointer}
+
+    /* Popup giới thiệu (About) */
+    dialog.about{width:min(680px,96vw);border:1px solid #2b3447;border-radius:16px;background:#0d1117;color:#fff;padding:0}
+    .about header{display:flex;align-items:center;gap:10px;padding:14px 16px;border-bottom:1px solid #202637;background:#0f131b}
+    .about header strong{font-size:16px}
+    .about .content{padding:16px;line-height:1.6}
+    .about .content pre{
+      background:#0f131b;border:1px solid #2b3447;border-radius:10px;padding:10px;overflow:auto;white-space:pre-wrap
+    }
+    .about .actions{display:flex;justify-content:flex-end;padding:12px 16px;border-top:1px solid #202637}
+    .about button{background:#1a2130;border:1px solid #2b3447;color:#fff;border-radius:10px;padding:8px 12px;cursor:pointer}
+    .about button:hover{background:#222a3b}
+
+    /* Popup Đang tải */
+    dialog.loading{
+      width:280px;max-width:90vw;border:1px solid #2b3447;border-radius:14px;
+      background:#0d1117;color:#fff;padding:0;overflow:hidden
+    }
+    .loading .box{display:flex;align-items:center;gap:12px;padding:16px}
+    .spinner{
+      width:24px;height:24px;border-radius:50%;
+      border:3px solid #243147;border-top-color:#7dd3fc;animation:spin 1s linear infinite
+    }
+    @keyframes spin{to{transform:rotate(360deg)}}
+    .loading .msg{font-weight:600}
+  </style>
+</head>
+<body>
+<div class="app">
+  <div class="topbar">
+    <div class="brand"><span class="dot"></span><span>TV Guide</span></div>
+    <div class="controls">
+      <!-- Ô nhập URL tùy ý -->
+      <input id="epgUrl" type="url" placeholder="URL XMLTV" value="https://vnepg.site/epg.xml" />
+      <!-- 🔽 Dropdown preset nguồn EPG -->
+      <select id="epgPreset" title="Nguồn XMLTV gợi ý">
+        <option value="">— Chọn nguồn gợi ý —</option>
+        <option value="https://vnepg.site/epg.xml">vnepg.site (mặc định)</option>
+        <option value="https://lichphatsong.site/schedule/epg.xml">lichphatsong.site</option>
+        <option value="https://www.open-epg.com/files/vietnam1.xml">open-epg.com</option>
+        <option value="https://epg.pw/xmltv/epg_VN.xml">epg.pw</option>
+      </select>
+
+      <button id="loadBtn" type="button">Tải lịch</button>
+      <input id="datePicker" type="date" />
+      <button id="nowBtn" type="button" class="secondary">Đang chiếu</button>
+      <input id="fileIn" type="file" accept=".xml,.xmltv,.gz" style="display:none" />
+      <button id="openFile" type="button" class="secondary">Chọn file…</button>
+      <!-- Nút thông tin -->
+      <button id="aboutBtn" type="button" class="icon-btn" title="Thông tin" aria-label="Thông tin">i</button>
+    </div>
+  </div>
+
+  <div class="guide">
+    <aside class="channels">
+      <div class="chan-header">Kênh</div>
+      <div id="chanList"></div>
+    </aside>
+
+    <section class="schedule" id="schedule">
+      <div class="sched-inner" id="schedInner">
+        <div class="timeline"><div class="ticks" id="ticks"></div></div>
+        <div class="rows" id="rows"></div>
+        <div class="now-line" id="nowLine" hidden></div>
+      </div>
+    </section>
+  </div>
+</div>
+
+<!-- Popup chi tiết chương trình -->
+<dialog class="sheet" id="sheet">
+  <header>
+    <strong id="sheetTitle">Chi tiết chương trình</strong>
+    <button class="close" onclick="sheet.close()">Đóng</button>
+  </header>
+  <div class="content">
+    <div class="meta" id="sheetMeta"></div>
+    <p id="sheetDesc" style="margin-top:12px"></p>
+  </div>
+</dialog>
+
+<!-- Popup thông tin (About) -->
+<dialog class="about" id="about">
+  <header>
+    <strong>Thông tin</strong>
+  </header>
+  <div class="content" id="aboutContent">
+    <p>Công cụ xem lịch phát sóng định dạng XMLTV từ URL hoặc tệp *.xml</p>
+    <ul style="margin:0 0 12px 18px">
+      <li>Giờ hiển thị trên lịch phát sóng là giờ địa phương theo thiết bị của người dùng</li>
+      <li>Một số nguồn lịch phát sóng XMLTV cho Việt Nam:</li>
+    </ul>
+    <pre>https://vnepg.site/epg.xml
+https://lichphatsong.site/schedule/epg.xml
+https://www.open-epg.com/files/vietnam1.xml
+https://epg.pw/xmltv/epg_VN.xml</pre>
+    <p id="tzLine" style="margin-top:8px;color:#9fb3d9"></p>
+    <p id="statsLine" style="margin-top:4px;color:#c6d6ff"></p>
+  </div>
+  <div class="actions">
+    <button id="aboutClose" type="button">Đóng</button>
+  </div>
+</dialog>
+
+<!-- Popup Đang tải -->
+<dialog class="loading" id="loading" aria-live="polite" aria-busy="true">
+  <div class="box">
+    <div class="spinner" aria-hidden="true"></div>
+    <div class="msg">Đang tải…</div>
+  </div>
+</dialog>
+
+<script>
+const state={data:null,dayStart:null,dayEnd:null,slotMin:60, autoScrolledForDay:null};
+const ROW_H=64,SLOT_W=260;
+const fmt=d=>d.toLocaleTimeString([], {hour:'2-digit',minute:'2-digit'});
+
+function safeDate(d){const t=d instanceof Date?d.getTime():new Date(d).getTime();return Number.isFinite(t)?new Date(t):null;}
+function toDateInputValueLocal(date){
+  const y = date.getFullYear();
+  const m = String(date.getMonth()+1).padStart(2,'0');
+  const d = String(date.getDate()).padStart(2,'0');
+  return `${y}-${m}-${d}`;
+}
+
+/* === Loading helpers === */
+const $loading = ()=>document.getElementById('loading');
+function showLoading(msg='Đang tải…'){
+  const dlg = $loading(); if(!dlg) return;
+  const label = dlg.querySelector('.msg'); if(label) label.textContent = msg;
+  if(!dlg.open) dlg.showModal();
+}
+function hideLoading(){
+  const dlg = $loading(); if(dlg?.open) dlg.close();
+}
+
+/* Parse XMLTV với TZ chuẩn → hiển thị LOCAL */
+function parseXml(xml){
+  const dom=new DOMParser().parseFromString(xml,'text/xml');
+  const channels=[...dom.querySelectorAll('channel')].map(ch=>({
+    id:ch.getAttribute('id'),
+    name:(ch.querySelector('display-name')?.textContent||'').trim(),
+    icon:ch.querySelector('icon')?.getAttribute('src')||null
+  }));
+
+  const rx=/^(\d{4})(\d{2})(\d{2})(?:T)?(\d{2})(\d{2})(\d{2})?(?:\s*([+-]\d{2}:?\d{2}|Z))?$/;
+  function parseDT(s){
+    if(!s) return null;
+    s = s.trim();
+    const m = s.match(rx);
+    if(!m) return null;
+    let [,Y,Mo,D,h,mi,se,off] = m;
+    se = se || '00';
+    if(off){
+      if(off==='Z'){
+        const ts = Date.UTC(+Y, +Mo-1, +D, +h, +mi, +se);
+        return new Date(ts);
+      }else{
+        const sign = off[0]==='-' ? -1 : 1;
+        const hh = parseInt(off.slice(1,3),10);
+        const mm = parseInt(off.slice(off.includes(':')?4:3, off.includes(':')?6:5),10);
+        const offsetMin = sign * (hh*60 + mm);
+        const srcUTC = Date.UTC(+Y, +Mo-1, +D, +h, +mi, (se||'00')) - offsetMin*60*1000;
+        return new Date(srcUTC);
+      }
+    }
+    return new Date(+Y, +Mo-1, +D, +h, +mi, (se||'00'));
+  }
+
+  const progs=[...dom.querySelectorAll('programme')].map(p=>{
+    const start=parseDT(p.getAttribute('start'));
+    const stop =parseDT(p.getAttribute('stop'));
+    return{
+      channel:p.getAttribute('channel'),
+      title:(p.querySelector('title')?.textContent||'').trim(),
+      desc :(p.querySelector('desc')?.textContent||'').trim(),
+      category:(p.querySelector('category')?.textContent||'').trim(),
+      start,stop
+    };
+  }).filter(p=>p.start&&p.stop&&p.stop>p.start);
+
+  return {channels, progs};
+}
+
+function buildDay(d){
+  const s=safeDate(d)||new Date(); s.setHours(0,0,0,0);
+  const e=new Date(s); e.setDate(e.getDate()+1);
+  state.dayStart=s; state.dayEnd=e;
+  state.autoScrolledForDay = null;
+}
+
+function chooseDateFromData(data){
+  const today=new Date();today.setHours(0,0,0,0);
+  const daysSet=new Set();
+  for(const p of data.progs||[]){
+    if(!p.start) continue;
+    const d=new Date(p.start); d.setHours(0,0,0,0);
+    daysSet.add(+d);
+  }
+  const days=[...daysSet].map(ms=>new Date(ms));
+  if(days.some(d=>+d===+today)) return today;
+  if(!days.length) return today;
+  return days.reduce((a,b)=>Math.abs(+b-+today)<Math.abs(+a-+today)?b:a);
+}
+
+function filterData(data){
+  const within=(data.progs||[]).filter(p=>p.start&&p.stop&&p.stop>state.dayStart&&p.start<state.dayEnd);
+  const per=new Map();
+  for(const p of within){ if(!per.has(p.channel)) per.set(p.channel,[]); per.get(p.channel).push(p); }
+  const idSet=new Set(per.keys());
+  const channels=(data.channels||[]).filter(c=>idSet.has(c.id)); // giữ thứ tự trong XML
+  return {channels, per};
+}
+
+function render(f){
+  const totalMin=(state.dayEnd-state.dayStart)/60000, cols=Math.ceil(totalMin/state.slotMin);
+  const trackW=cols*SLOT_W;
+
+  const ticks=document.getElementById('ticks'); ticks.innerHTML=''; ticks.style.width=trackW+'px';
+  let t=new Date(state.dayStart);
+  while(t<state.dayEnd){
+    const div=document.createElement('div'); div.className='tick'; div.textContent=fmt(t);
+    ticks.appendChild(div); t.setMinutes(t.getMinutes()+state.slotMin);
+  }
+
+  const cl=document.getElementById('chanList'); cl.innerHTML='';
+  f.channels.forEach(c=>{
+    const row=document.createElement('div'); row.className='chan-row';
+    row.innerHTML = `${c.icon?`<img class="chan-logo" src="${c.icon}" alt="">`:''}<span class="chan-name">${c.name||c.id}</span>`;
+    cl.appendChild(row);
+  });
+
+  const rows=document.getElementById('rows'); rows.innerHTML=''; const trackH=f.channels.length*ROW_H; rows.style.height=trackH+'px';
+  f.channels.forEach((c,ri)=>{ const bg=document.createElement('div'); bg.className='row-bg'; bg.style.top=(ri*ROW_H)+'px'; rows.appendChild(bg); });
+
+  const now=new Date();
+  f.channels.forEach((c,ri)=>{
+    (f.per.get(c.id)||[]).forEach(p=>{
+      const start=Math.max(p.start,state.dayStart), stop=Math.min(p.stop,state.dayEnd), durMin=((stop-start)/60000);
+      const left=((start-state.dayStart)/60000)/state.slotMin*SLOT_W, width=Math.max(3, durMin/state.slotMin*SLOT_W-2), top=ri*ROW_H+4;
+
+      const card=document.createElement('div');
+      card.className='prog';
+      card.style.left=left+'px'; card.style.top=top+'px'; card.style.width=width+'px';
+      if(start<=now&&stop>=now) card.classList.add('live');
+      card.innerHTML=(durMin<=5)?`<div class="title">…</div>`:`<div class="title">${p.title||'Chương trình'}</div>`;
+      card.title = `${fmt(p.start)}–${fmt(p.stop)} · ${p.title}`;
+      card.addEventListener('click',()=>openSheet(c,p));
+      rows.appendChild(card);
+    });
+  });
+
+  drawNow(trackH);
+}
+
+/* Vạch "Đang chiếu" */
+function drawNow(trackH){
+  const nl=document.getElementById('nowLine'), now=new Date();
+  if(now<state.dayStart || now>state.dayEnd){ nl.hidden=true; return; }
+  const left=((now-state.dayStart)/60000)/state.slotMin*SLOT_W;
+  nl.hidden=false; nl.style.left=left+'px';
+  nl.style.height=(trackH??document.getElementById('rows').offsetHeight)+'px';
+}
+
+function openSheet(channel,p){
+  const sheet=document.getElementById('sheet');
+  document.getElementById('sheetTitle').textContent=p.title||'Chương trình';
+  const meta=document.getElementById('sheetMeta'); meta.innerHTML='';
+  const dur=Math.round((p.stop-p.start)/60000);
+  const durStr=dur>=60?`${Math.floor(dur/60)}h${dur%60?dur%60:''}`:`${dur} phút`;
+  [channel?.name||channel?.id, `${fmt(p.start)}–${fmt(p.stop)}`, durStr, p.category||null].filter(Boolean)
+    .forEach(t=>{ const c=document.createElement('span'); c.className='chip'; c.textContent=t; meta.appendChild(c); });
+  document.getElementById('sheetDesc').textContent=p.desc||'—';
+  sheet.showModal();
+}
+
+/* Proxy PHP để tránh CORS */
+async function loadFromUrl(u){
+  const res = await fetch(`/proxy.php?url=${encodeURIComponent(u)}`);
+  if(!res.ok) throw new Error('Fetch thất bại: '+res.status);
+  const text = await res.text();
+  return parseXml(text);
+}
+
+/* Cuộn tới "hiện tại" một lần mỗi ngày */
+function maybeAutoScrollToNow(){
+  const sc = document.getElementById('schedule');
+  const now = new Date();
+  if(now < state.dayStart || now >= state.dayEnd) return;
+  const dayKey = state.dayStart.toISOString().slice(0,10);
+  if(state.autoScrolledForDay === dayKey) return;
+  const left = ((now - state.dayStart)/60000)/state.slotMin * SLOT_W;
+  sc.scrollTo({ left: Math.max(0, left - 200), behavior: 'smooth' });
+  state.autoScrolledForDay = dayKey;
+}
+
+async function build(src){
+  showLoading('Đang tải lịch…');            /* ✅ bật popup trước khi tải */
+  try{
+    let d;
+    if(typeof src==='string'){
+      d = await loadFromUrl(src);
+    }else{
+      d = src; // đã parse sẵn (từ file)
+    }
+    state.data=d;
+
+    const picked=chooseDateFromData(d);
+    const dp=document.getElementById('datePicker');
+    dp.value = toDateInputValueLocal(picked);
+    buildDay(picked);
+
+    const f=filterData(d);
+    if(!f.channels.length){
+      document.getElementById('chanList').innerHTML='';
+      document.getElementById('rows').innerHTML='<div style="color:#8c96a5;padding:12px">Không có chương trình trong ngày này.</div>';
+      document.getElementById('ticks').innerHTML='';
+    } else {
+      render(f);
+      maybeAutoScrollToNow();
+    }
+    setStatsLine();
+  }catch(err){
+    console.error(err);
+    alert('Không thể tải XMLTV: ' + err.message);
+  }finally{
+    hideLoading();                           /* ✅ tắt popup khi xong/ lỗi */
+  }
+}
+
+/* Đồng bộ cuộn dọc giữa 2 cột */
+(function syncScroll(){
+  const ch=document.querySelector('.channels'), sc=document.querySelector('.schedule'); let lock=0;
+  ch.addEventListener('scroll',()=>{ if(lock) return; lock=1; sc.scrollTop=ch.scrollTop; lock=0; }, {passive:true});
+  sc.addEventListener('scroll',()=>{ if(lock) return; lock=1; ch.scrollTop=sc.scrollTop; lock=0; drawNow(); }, {passive:true});
+})();
+
+/* Hiển thị múi giờ trong About */
+function setTimezoneLine(){
+  const tzName = Intl.DateTimeFormat().resolvedOptions().timeZone || 'Local';
+  const offsetMin = -new Date().getTimezoneOffset();
+  const sign = offsetMin>=0?'+':'-';
+  const abs = Math.abs(offsetMin);
+  const hh = String(Math.floor(abs/60)).padStart(2,'0');
+  const mm = String(abs%60).padStart(2,'0');
+  const text = `Múi giờ hiện tại: ${tzName} (GMT${sign}${hh}:${mm})`;
+  const el = document.getElementById('tzLine');
+  if(el) el.textContent = text;
+}
+
+/* Thống kê nguồn */
+function setStatsLine(){
+  const el = document.getElementById('statsLine');
+  if(!el) return;
+  const ch = state?.data?.channels?.length ?? 0;
+  const pr = state?.data?.progs?.length ?? 0;
+  el.textContent = `Thống kê: ${ch} kênh · ${pr} chương trình`;
+}
+
+/* Events */
+window.addEventListener('DOMContentLoaded',()=>{
+  const urlIn=document.getElementById('epgUrl');
+  const preset=document.getElementById('epgPreset');
+
+  document.getElementById('loadBtn').addEventListener('click',()=>build(urlIn.value.trim()));
+
+  preset.addEventListener('change',()=>{
+    const u = preset.value; if(!u) return;
+    urlIn.value = u; build(u);
+  });
+
+  urlIn.addEventListener('input',()=>{
+    if(preset.value && preset.value !== urlIn.value.trim()){
+      preset.value = '';
+    }
+  });
+
+  (function syncPresetWithInput(){
+    const current = urlIn.value.trim();
+    for(const opt of preset.options){
+      if(opt.value && opt.value === current){ preset.value = opt.value; break; }
+    }
+  })();
+
+  const fIn=document.getElementById('fileIn');
+  document.getElementById('openFile').addEventListener('click',()=>fIn.click());
+  document.getElementById('openFile').addEventListener('keydown',(e)=>{ if(e.key==='Enter' || e.key===' '){ e.preventDefault(); fIn.click(); }});
+  // Khi đọc file: hiển thị "Đang đọc tệp…" trước, build() sẽ tiếp tục hiển thị "Đang tải lịch…"
+  fIn.addEventListener('change',async e=>{
+    const f=e.target.files?.[0]; if(!f) return;
+    showLoading('Đang đọc tệp…');
+    try{
+      const txt=await f.text();
+      await build(parseXml(txt));
+    }finally{
+      hideLoading(); /* build() cũng hide, nhưng gọi thêm để chắc chắn đóng nếu lỗi giữa chừng */
+    }
+  });
+
+  document.getElementById('datePicker').addEventListener('change',()=>{
+    if(!state.data) return;
+    const d=safeDate(document.getElementById('datePicker').value);
+    if(!d) return;
+    buildDay(d); render(filterData(state.data)); maybeAutoScrollToNow();
+  });
+
+  document.getElementById('nowBtn').addEventListener('click',()=>{
+    const sc=document.getElementById('schedule');
+    const n=new Date();
+    if(n<state.dayStart||n>state.dayEnd) return;
+    const left=((n-state.dayStart)/60000)/state.slotMin*SLOT_W;
+    sc.scrollTo({left:Math.max(0,left-200), behavior:'smooth'});
+    drawNow();
+  });
+
+  // Nạp mặc định
+  build(urlIn.value);
+
+  // About dialog
+  const about=document.getElementById('about');
+  document.getElementById('aboutBtn').addEventListener('click',()=>{ setTimezoneLine(); setStatsLine(); about.showModal(); });
+  document.getElementById('aboutClose').addEventListener('click',()=>about.close());
+});
+setInterval(()=>drawNow(),60000);
+</script>
+</body>
+</html>
