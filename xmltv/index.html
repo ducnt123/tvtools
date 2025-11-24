@@ -344,7 +344,7 @@ function openSheet(channel,p){
 
 /* Proxy PHP để tránh CORS */
 async function loadFromUrl(u){
-  const res = await fetch(`/proxy.php?url=${encodeURIComponent(u)}`);
+  const res = await fetch(`/tvtools/proxy.php?url=${encodeURIComponent(u)}`);
   if(!res.ok) throw new Error('Fetch thất bại: '+res.status);
   const text = await res.text();
   return parseXml(text);
