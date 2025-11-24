@@ -103,7 +103,7 @@
       <!-- 🔽 Dropdown preset nguồn EPG -->
       <select id="epgPreset" title="Nguồn XMLTV gợi ý">
         <option value="">— Chọn nguồn gợi ý —</option>
-        <option value="https://vnepg.site/epg.xml">vnepg.site (mặc định)</option>
+        <option value="https://vnepg.site/epg.xml">vnepg.site</option>
         <option value="https://lichphatsong.site/schedule/epg.xml">lichphatsong.site</option>
         <option value="https://www.open-epg.com/files/vietnam1.xml">open-epg.com</option>
         <option value="https://epg.pw/xmltv/epg_VN.xml">epg.pw</option>
@@ -344,7 +344,7 @@ function openSheet(channel,p){
 
 /* Proxy PHP để tránh CORS */
 async function loadFromUrl(u){
-  const res = await fetch(`/tvtools/proxy.php?url=${encodeURIComponent(u)}`);
+  const res = await fetch(`https://ducnt123.github.io/tvtools/proxy.php?url=${encodeURIComponent(u)}`);
   if(!res.ok) throw new Error('Fetch thất bại: '+res.status);
   const text = await res.text();
   return parseXml(text);
