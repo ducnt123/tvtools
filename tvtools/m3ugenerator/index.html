@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Trình tạo danh sách phát IPTV M3U</title>
+  <style>
+    /* ======= Thiết kế tối giản, dễ đọc ======= */
+    :root{
+      --bg:#0b0c0f; --panel:#14161c; --muted:#9aa3b2; --text:#e9eef3; --accent:#4da6ff; --accent2:#ff4dac; --ok:#65d57b; --warn:#ffd166;
+      --border:#2a2f3a; --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    }
+    html,body{height:100%;margin:0;background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,Segoe UI,Roboto,Inter,"Helvetica Neue",Arial,sans-serif}
+    .wrap{max-width:1100px;margin:40px auto;padding:0 16px}
+    h1{font-size:clamp(20px,3vw,28px);font-weight:700;margin:0 0 16px}
+    p.sub{color:var(--muted);margin:4px 0 24px}
+    .grid{display:grid;gap:12px}
+    @media (min-width:900px){.grid{grid-template-columns:1.1fr 1fr}}
+    .card{background:var(--panel);border:1px solid var(--border);border-radius:14px;padding:16px}
+    label{display:block;font-size:13px;color:var(--muted);margin-bottom:6px}
+    input,select,textarea{width:100%;box-sizing:border-box;background:#0e1015;color:var(--text);border:1px solid var(--border);border-radius:10px;padding:10px 12px;font-size:14px}
+    textarea{min-height:260px;font-family:var(--mono);line-height:1.4;white-space:pre}
+    .row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+    .btns{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px}
+    button,.linkbtn{appearance:none;border:none;background:var(--accent);color:white;border-radius:10px;padding:10px 14px;font-weight:600;cursor:pointer}
+    button.sec{background:#1b1f2a}
+    button.warn{background:var(--warn);color:#181a20}
+    .hint{font-size:12px;color:var(--muted);margin-top:6px}
+    .pill{display:inline-block;background:#0f1320;border:1px solid var(--border);padding:6px 10px;border-radius:999px;color:var(--muted);font-size:12px}
+    .mono{font-family:var(--mono)}
+    .ok{color:var(--ok)}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <h1>Trình tạo danh sách phát IPTV</h1>
+    <p class="sub">Nhập thông tin kênh, nhấn <b>Thêm</b> để chèn <code class="mono">#EXTINF</code> vào danh sách bên dưới rồi <b>Tải danh sách phát</b> để tải tệp <code>.m3u</code>.</p>
+
+    <div class="grid">
+      <!-- =====================================
+           KHỐI 1: Biểu mẫu nhập thông tin kênh
+           - Bạn có thể thêm/bớt trường theo nhu cầu
+           ===================================== -->
+      <section class="card">
+        <div class="row">
+          <div>
+            <label for="tvgUrl">Nguồn lịch phát sóng XMLTV (url-tvg)</label>
+            <input id="tvgUrl" type="url" placeholder="https://.../guide.xml.gz" />
+            <div class="hint">Sẽ được ghi ở dòng mở đầu: <span class="mono">#EXTM3U url-tvg="..."</span></div>
+          </div>
+          <div>
+            <label for="fileName">Tên tệp M3U khi tải</label>
+            <input id="fileName" type="text" placeholder="playlist.m3u" />
+          </div>
+        </div>
+
+        <hr style="border:none;border-top:1px solid var(--border);margin:16px 0"/>
+
+        <div class="row">
+          <div>
+            <label for="chno">Số kênh hiển thị (tvg-chno)</label>
+            <input id="chno" type="number" inputmode="numeric" min="0" placeholder="để trống = bỏ qua" />
+          </div>
+          <div>
+            <label for="group">Nhóm (group-title)</label>
+            <input id="group" type="text" placeholder="Ví dụ: VTV, Thể thao" />
+          </div>
+        </div>
+
+        <div class="row">
+          <div>
+            <label for="name">Tên kênh <span class="pill">bắt buộc</span></label>
+            <input id="name" type="text" placeholder="VTV1 HD" required />
+          </div>
+          <div>
+            <label for="tvgId">ID kênh (tvg-id)</label>
+            <input id="tvgId" type="text" placeholder="vtv1.vietnam" />
+          </div>
+        </div>
+
+        <div class="row">
+          <div>
+            <label for="logo">Logo URL (tvg-logo)</label>
+            <input id="logo" type="url" placeholder="https://.../vtv1.png" />
+          </div>
+          <div>
+            <label for="url">URL phát (stream) <span class="pill">bắt buộc</span></label>
+            <input id="url" type="url" placeholder="https://.../stream.m3u8" required />
+          </div>
+        </div>
+
+        <div class="btns">
+          <button id="addBtn">Thêm</button>
+          <button class="sec" id="resetFields" type="button">Xoá trắng biểu mẫu</button>
+        </div>
+        <div class="hint">Lưu ý: Nếu bỏ trống "tvg-chno" thì sẽ KHÔNG thêm thuộc tính này. #EXTINF mặc định là <span class="mono">#EXTINF:0</span>.</div>
+      </section>
+
+      <!-- =====================================
+           KHỐI 2: Kết quả M3U & hành động
+           - Nội dung hiển thị có thể copy hoặc tải file
+           ===================================== -->
+      <section class="card">
+        <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:8px">
+          <div>
+            <div style="font-weight:700;margin-bottom:2px">Kết quả danh sách phát (M3U)</div>
+            <div class="hint">Bao gồm dòng đầu <span class="mono">#EXTM3U</span> + các kênh đã thêm.</div>
+          </div>
+          <div class="btns" style="margin:0">
+            <button id="copyBtn" type="button" title="Sao chép toàn bộ">Sao chép</button>
+            <button id="downloadBtn" type="button" title="Tải file .m3u">Tải danh sách phát</button>
+            <button class="warn" id="clearAll" type="button" title="Xoá toàn bộ kênh">Xoá hết</button>
+          </div>
+        </div>
+        <textarea id="output" spellcheck="false" placeholder="#EXTM3U\n#EXTINF:0 tvg-id=\"...\" tvg-logo=\"...\" group-title=\"...\",Tên kênh\nhttps://.../stream.m3u8"></textarea>
+        <div class="hint">Mẹo: bạn có thể chỉnh sửa thủ công trong ô này nếu cần.</div>
+      </section>
+    </div>
+
+    <p class="hint" style="margin-top:14px">Chuẩn M3U phổ biến cho IPTV: mỗi kênh gồm 2 dòng: <span class="mono">#EXTINF:...</span> và <span class="mono">URL stream</span>. Các thuộc tính thường dùng: <span class="mono">tvg-id</span>, <span class="mono">tvg-logo</span>, <span class="mono">group-title</span>. Dòng đầu tiên có thể chứa <span class="mono">url-tvg</span> để trỏ đến XMLTV.</p>
+  </div>
+
+  <script>
+    // =============== TIỆN ÍCH NHỎ ===============
+    const $ = (id) => document.getElementById(id);
+
+    // Trạng thái playlist hiện tại (bao gồm cả dòng đầu #EXTM3U)
+    let lines = [];
+
+    // Tạo/refresh dòng đầu tiên dựa theo url-tvg hiện tại
+    function makeHeader() {
+      const tvg = $('tvgUrl').value.trim();
+      // Mặc định luôn có #EXTM3U; nếu có URL TVG thì thêm thuộc tính url-tvg
+      return tvg ? `#EXTM3U url-tvg="${tvg}"` : `#EXTM3U`;
+    }
+
+    // Kết hợp các dòng để render vào textarea
+    function renderOutput() {
+      const content = [makeHeader(), ...lines].join('\n');
+      $('output').value = content + (content.endsWith('\n') ? '' : '\n');
+    }
+
+    // Reset toàn bộ kênh (không xoá header)
+    function clearAllChannels() {
+      lines = [];
+      renderOutput();
+    }
+
+    // Sự kiện đổi URL TVG -> cập nhật header ngay
+    $('tvgUrl').addEventListener('input', renderOutput);
+
+    // Khởi tạo nội dung đầu
+    renderOutput();
+
+    // =============== XỬ LÝ NÚT THÊM ===============
+    $('addBtn').addEventListener('click', (e) => {
+      e.preventDefault();
+      const name   = $('name').value.trim();
+      const url    = $('url').value.trim();
+      if (!name || !url) {
+        alert('Vui lòng điền đầy đủ Tên kênh và URL phát (stream).');
+        return;
+      }
+      // Nếu không nhập số thứ tự thì mặc định 0
+      const chno   = $('chno').value.trim();
+      const num    = 0;
+      const tvgId  = $('tvgId').value.trim();
+      const group  = $('group').value.trim();
+      const logo   = $('logo').value.trim();
+
+      // Xây chuỗi thuộc tính theo chuẩn M3U
+      // CHÚ Ý: chỉ thêm thuộc tính khi có giá trị để chuỗi gọn gàng
+      const attrs = [];
+      if (tvgId) attrs.push(`tvg-id="${tvgId}"`);
+      if (chno) attrs.push(`tvg-chno="${chno}"`);
+      if (logo) attrs.push(`tvg-logo="${logo}"`);
+      if (group) attrs.push(`group-title="${group}"`);
+
+      const attrStr = attrs.length ? (' ' + attrs.join(' ')) : '';
+      const extinf  = `#EXTINF:${num}${attrStr},${name}`;
+
+      // Mỗi kênh gồm 2 dòng: EXTINF và URL stream
+      lines.push(extinf);
+      lines.push(url);
+
+      renderOutput();
+    });
+
+    // =============== SAO CHÉP & TẢI FILE ===============
+    $('copyBtn').addEventListener('click', async () => {
+      try {
+        await navigator.clipboard.writeText($('output').value);
+        $('copyBtn').textContent = 'Đã sao chép ✓';
+        setTimeout(()=> $('copyBtn').textContent = 'Sao chép', 1200);
+      } catch (err) {
+        alert('Trình duyệt không cho phép sao chép tự động. Hãy chọn và copy thủ công.');
+      }
+    });
+
+    $('downloadBtn').addEventListener('click', () => {
+      const name = $('fileName').value.trim() || 'playlist.m3u';
+      const blob = new Blob([$('output').value], { type: 'audio/x-mpegurl;charset=utf-8' });
+      const url  = URL.createObjectURL(blob);
+      const a    = document.createElement('a');
+      a.href = url; a.download = name;
+      document.body.appendChild(a); a.click(); a.remove();
+      URL.revokeObjectURL(url);
+    });
+
+    // =============== XOÁ HẾT & XOÁ TRẮNG FORM ===============
+    $('clearAll').addEventListener('click', () => {
+      if (confirm('Xoá toàn bộ kênh đã thêm?')) {
+        clearAllChannels();
+      }
+    });
+
+    $('resetFields').addEventListener('click', () => {
+      ['chno','group','name','tvgId','logo','url'].forEach(id => $(id).value = '');
+    });
+  </script>
+</body>
+</html>

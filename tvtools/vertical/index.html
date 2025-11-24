@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>TV Guide – XMLTV (Vertical)</title>
+<style>
+  :root{
+    /* Theme giữ nguyên tông màu cũ */
+    --bg:#0b0c0f; --panel:#13151a; --panel-2:#0f1116; --text:#f2f5f7; --muted:#8c96a5;
+    --accent:#ff4dac; --accent-2:#2d92ff; --card:#20232b; --card-border:#2c3140; --now:#7dd3fc;
+
+    /* Layout dọc */
+    --col-w: 240px;       /* bề rộng mỗi cột kênh */
+    --slot-h: 140px;      /* chiều cao 1 giờ (tăng/giảm tùy thích) */
+    --left-rail: 70px;    /* cột giờ bên trái */
+  }
+  html,body{height:100%;margin:0;background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,sans-serif}
+  *{box-sizing:border-box}
+  a{color:var(--accent-2)}
+
+  .app{display:flex;flex-direction:column;height:100%}
+
+  .topbar{display:flex;gap:12px;align-items:center;padding:12px 16px;border-bottom:1px solid #222;
+    background:linear-gradient(180deg,var(--panel),var(--panel-2));position:sticky;top:0;z-index:1000}
+  .brand{display:flex;align-items:center;gap:10px;font-weight:700}
+  .brand .dot{width:10px;height:10px;border-radius:50%;background:var(--accent)}
+  .controls{display:flex;gap:10px;flex-wrap:wrap;margin-left:auto}
+  .controls input[type="url"], .controls input[type="text"]{background:#0c0f14;color:var(--text);
+    border:1px solid #283041;border-radius:10px;padding:10px 12px;min-width:280px}
+  .controls button{background:var(--accent);border:0;color:white;border-radius:10px;padding:10px 14px;font-weight:600;cursor:pointer}
+  .controls button.secondary{background:#1f2430;color:var(--text);border:1px solid #2f394a}
+  .icon-btn{display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:999px;border:1px solid #2f394a;background:#1a2130;color:#cfe1ff;font-weight:700;cursor:pointer}
+
+  /* Khung chính: thanh trái (giờ) + vùng lưới kênh */
+  .guide{display:grid;grid-template-columns: var(--left-rail) 1fr; height:calc(100vh - 64px); overflow:hidden}
+  .time-rail{position:relative;background:var(--panel-2);border-right:1px solid #1e2431}
+  .grid-wrap{position:relative;background:var(--panel);overflow:auto}
+
+  /* Header kênh (sticky trên cùng của grid) */
+  .grid{position:relative; min-width: max(100%, var(--content-w, 100%));}
+  .ch-header{position:sticky; top:0; z-index:5; background:linear-gradient(180deg,var(--panel),#10131a);
+    display:grid; grid-auto-flow:column; border-bottom:1px solid #1e2431}
+  .ch-cell{width:var(--col-w); padding:10px 8px; border-right:1px solid #1e2431; display:flex; align-items:center; gap:8px}
+  .ch-logo{width:22px;height:22px;object-fit:contain;filter:brightness(1.1)}
+  .ch-name{font-weight:600; white-space:nowrap; overflow:hidden; text-overflow:ellipsis}
+
+  /* Cột giờ bên trái (cuộn theo dọc, sticky trái) */
+  .time-col{position:sticky; left:0; z-index:6; background:var(--panel-2); border-right:1px solid #1e2431}
+  .tick{height:var(--slot-h); display:flex; align-items:flex-start; justify-content:center;
+        padding-top:6px; color:#fff; font-size:14px; border-bottom:1px solid #141925}
+
+  /* Lưới ô nền theo giờ (để định vị tuyệt đối) */
+  .rows{position:relative}
+  .row-line{position:absolute; left:0; right:0; height:var(--slot-h); border-bottom:1px solid #141925}
+
+  /* Thẻ chương trình */
+  .prog{position:absolute; background:var(--card); border:1px solid var(--card-border);
+    border-radius:12px; padding:8px 10px; height:auto; overflow:hidden; white-space:nowrap; text-overflow:ellipsis;
+    display:flex; align-items:center; gap:8px; cursor:pointer}
+  .prog:hover{border-color:#3a4257; box-shadow:0 0 0 2px rgba(125,211,252,.15) inset}
+  .prog.live{border-color:var(--accent); box-shadow:0 0 0 2px rgba(255,77,172,.2) inset}
+  .prog .title{flex:1; min-width:0; overflow:hidden; white-space:nowrap; text-overflow:ellipsis}
+  .prog .info{color:var(--muted); margin-left:6px; white-space:nowrap}
+
+  /* Đường “ĐANG CHIẾU” ngang */
+  .now-line{position:absolute; left:0; right:0; height:2px; background:var(--now); z-index:4; pointer-events:none}
+
+  /* Dialogs */
+  dialog.sheet{width:min(720px,96vw);border:1px solid #2b3447;border-radius:16px;background:#0d1117;color:var(--text);padding:0;overflow:hidden}
+  .sheet header{display:flex;gap:12px;align-items:center;padding:16px;border-bottom:1px solid #202637;background:#0f131b}
+  .sheet .content{padding:16px;line-height:1.55}
+  .sheet .meta{display:flex;gap:8px;flex-wrap:wrap;color:var(--muted)}
+  .chip{padding:3px 8px;border-radius:999px;border:1px solid #2b3447}
+  .sheet button.close{margin-left:auto;background:#1a2130;border:1px solid #2b3447;color:#fff;padding:8px 12px;border-radius:10px;cursor:pointer}
+
+  dialog.about{width:min(680px,96vw);border:1px solid #2b3447;border-radius:16px;background:#0d1117;color:#fff;padding:0}
+  .about header{display:flex;align-items:center;gap:10px;padding:14px 16px;border-bottom:1px solid #202637;background:#0f131b}
+  .about .content{padding:16px;line-height:1.6}
+  .about .content pre{background:#0f131b;border:1px solid #2b3447;border-radius:10px;padding:10px;white-space:pre-wrap}
+  .about .actions{display:flex;justify-content:flex-end;padding:12px 16px;border-top:1px solid #202637}
+</style>
+</head>
+<body>
+<div class="app">
+  <div class="topbar">
+    <div class="brand"><span class="dot"></span><span>TV Guide</span></div>
+    <div class="controls">
+      <input id="epgUrl" type="url" placeholder="URL XMLTV" value="https://vnepg.site/epg.xml"/>
+      <button id="loadBtn" type="button">Tải lịch</button>
+      <input id="datePicker" type="date"/>
+      <button id="nowBtn" type="button" class="secondary">Đang chiếu</button>
+      <input id="fileIn" type="file" accept=".xml,.xmltv,.gz" style="display:none"/>
+      <button id="openFile" type="button" class="secondary">Chọn file…</button>
+      <button id="aboutBtn" type="button" class="icon-btn" title="Thông tin" aria-label="Thông tin">i</button>
+    </div>
+  </div>
+
+  <div class="guide">
+    <!-- Cột giờ (bên trái) -->
+    <aside class="time-rail">
+      <div id="timeCol" class="time-col"></div>
+    </aside>
+
+    <!-- Khu vực lưới kênh + chương trình -->
+    <section class="grid-wrap" id="gridWrap">
+      <div class="grid" id="grid">
+        <div id="chHeader" class="ch-header"></div>
+        <div id="rows" class="rows"></div>
+        <div id="nowLine" class="now-line" hidden></div>
+      </div>
+    </section>
+  </div>
+</div>
+
+<!-- Popup chi tiết -->
+<dialog class="sheet" id="sheet">
+  <header>
+    <strong id="sheetTitle">Chi tiết chương trình</strong>
+    <button class="close" onclick="sheet.close()">Đóng</button>
+  </header>
+  <div class="content">
+    <div class="meta" id="sheetMeta"></div>
+    <p id="sheetDesc" style="margin-top:12px"></p>
+  </div>
+</dialog>
+
+<!-- Popup thông tin -->
+<dialog class="about" id="about">
+  <header><strong>Thông tin</strong></header>
+  <div class="content">
+    <p>Công cụ xem lịch phát sóng định dạng XMLTV từ URL hoặc tệp *.xml</p>
+    <ul style="margin:0 0 12px 18px">
+      <li>Giờ hiển thị trên lịch phát sóng là giờ địa phương theo thiết bị của người dùng</li>
+      <li>Một số nguồn lịch phát sóng XMLTV cho Việt Nam:</li>
+    </ul>
+    <pre>https://vnepg.site/epg.xml
+https://lichphatsong.site/schedule/epg.xml
+https://epg.pw/xmltv/epg_VN.xml</pre>
+    <p id="tzLine" style="margin-top:8px;color:#9fb3d9"></p>
+    <p id="statsLine" style="margin-top:4px;color:#c6d6ff"></p>
+  </div>
+  <div class="actions">
+    <button id="aboutClose" type="button">Đóng</button>
+  </div>
+</dialog>
+
+<script>
+/* ---------- State & utils ---------- */
+const state={data:null, dayStart:null, dayEnd:null, slotMin:60}; // 1h/slot
+const COL_W=240, SLOT_H=120; // khớp CSS
+const fmt=t=>t.toLocaleTimeString([], {hour:'2-digit', minute:'2-digit'});
+
+function safeDate(d){const t=d instanceof Date?d.getTime():new Date(d).getTime();return Number.isFinite(t)?new Date(t):null;}
+
+/* Parse XMLTV (tôn trọng TZ -> local) */
+function parseXml(xml){
+  const dom=new DOMParser().parseFromString(xml,'text/xml');
+  const channels=[...dom.querySelectorAll('channel')].map(ch=>({
+    id:ch.getAttribute('id'),
+    name:(ch.querySelector('display-name')?.textContent||'').trim(),
+    icon:ch.querySelector('icon')?.getAttribute('src')||null
+  }));
+  const rx=/^(\d{4})(\d{2})(\d{2})(?:T)?(\d{2})(\d{2})(\d{2})?(?:\s*([+-]\d{2}:?\d{2}|Z))?$/;
+  function parseDT(s){
+    if(!s) return null; s=s.trim(); const m=s.match(rx); if(!m) return null;
+    let[,Y,Mo,D,h,mi,se,off]=m; se=se||'00';
+    if(off){
+      if(off==='Z'){return new Date(Date.UTC(+Y,+Mo-1,+D,+h,+mi,se));}
+      const sign=off[0]==='-'?-1:1;
+      const hh=parseInt(off.slice(1,3),10);
+      const mm=parseInt(off.slice(off.includes(':')?4:3, off.includes(':')?6:5),10);
+      const offsetMin=sign*(hh*60+mm);
+      const utc=Date.UTC(+Y,+Mo-1,+D,+h,+mi,se)-offsetMin*60000;
+      return new Date(utc);
+    }
+    return new Date(+Y,+Mo-1,+D,+h,+mi,se);
+  }
+  const progs=[...dom.querySelectorAll('programme')].map(p=>{
+    const start=parseDT(p.getAttribute('start'));
+    const stop =parseDT(p.getAttribute('stop'));
+    return {channel:p.getAttribute('channel'),
+      title:(p.querySelector('title')?.textContent||'').trim(),
+      desc :(p.querySelector('desc')?.textContent||'').trim(),
+      category:(p.querySelector('category')?.textContent||'').trim(),
+      start,stop};
+  }).filter(p=>p.start&&p.stop&&p.stop>p.start);
+  return {channels, progs};
+}
+
+function buildDay(d){const s=safeDate(d)||new Date();s.setHours(0,0,0,0);const e=new Date(s);e.setDate(e.getDate()+1);state.dayStart=s;state.dayEnd=e;}
+
+function chooseDateFromData(data){
+  const today=new Date(); today.setHours(0,0,0,0);
+  const days=[...new Set((data.progs||[]).map(p=>{const d=new Date(p.start); d.setHours(0,0,0,0); return +d;}))].map(ms=>new Date(ms));
+  if(days.some(d=>+d===+today)) return today;
+  return days.length?days.reduce((a,b)=>Math.abs(+b-+today)<Math.abs(+a-+today)?b:a):today;
+}
+
+function filterData(data){
+  const within=(data.progs||[]).filter(p=>p.stop>state.dayStart&&p.start<state.dayEnd);
+  const per=new Map(); for(const p of within){ if(!per.has(p.channel)) per.set(p.channel,[]); per.get(p.channel).push(p); }
+  const ids=new Set(per.keys());
+  const channels=(data.channels||[]).filter(c=>ids.has(c.id)); // giữ thứ tự
+  return {channels, per};
+}
+
+/* ---------- Render vertical grid ---------- */
+function renderVertical(f){
+  // Tính tổng chiều cao & bề rộng grid
+  const hours = Math.ceil((state.dayEnd-state.dayStart)/3600000); // 24
+  const totalH = hours * SLOT_H;
+  const colsW  = f.channels.length * COL_W;
+
+  // set CSS var để grid rộng theo số cột
+  document.getElementById('grid').style.setProperty('--content-w', colsW+'px');
+
+  /* Header kênh */
+  const chHeader=document.getElementById('chHeader'); chHeader.innerHTML='';
+  chHeader.style.gridTemplateColumns = `repeat(${f.channels.length}, ${COL_W}px)`;
+  f.channels.forEach(c=>{
+    const cell=document.createElement('div'); cell.className='ch-cell';
+    cell.innerHTML = `${c.icon?`<img class="ch-logo" src="${c.icon}" alt="">`:''}<span class="ch-name" title="${c.name||c.id}">${c.name||c.id}</span>`;
+    chHeader.appendChild(cell);
+  });
+
+  /* Cột giờ */
+  const timeCol=document.getElementById('timeCol'); timeCol.innerHTML='';
+  let t=new Date(state.dayStart);
+  for(let i=0;i<hours;i++){
+    const div=document.createElement('div'); div.className='tick'; div.textContent=t.toLocaleTimeString([], {hour:'2-digit'});
+    timeCol.appendChild(div); t.setHours(t.getHours()+1);
+  }
+
+  /* Hàng nền giờ + thẻ chương trình */
+  const rows=document.getElementById('rows'); rows.innerHTML='';
+  rows.style.height = totalH+'px';
+  // nền các hàng
+  for(let i=0;i<hours;i++){
+    const ln=document.createElement('div'); ln.className='row-line'; ln.style.top = (i*SLOT_H)+'px'; rows.appendChild(ln);
+  }
+
+  const now=new Date();
+  f.channels.forEach((c,ci)=>{
+    const left = ci * COL_W + 6; // padding nhẹ
+    (f.per.get(c.id)||[]).forEach(p=>{
+      const top = Math.max(0, ((Math.max(p.start,state.dayStart)-state.dayStart)/60000)/60*SLOT_H)+4;
+      const height = Math.max(8, ((Math.min(p.stop,state.dayEnd)-Math.max(p.start,state.dayStart))/60000)/60*SLOT_H - 8);
+      const card=document.createElement('div'); card.className='prog';
+      card.style.left = left+'px'; card.style.top = top+'px'; card.style.width = (COL_W-12)+'px'; card.style.height = height+'px';
+      if(p.start<=now&&p.stop>=now) card.classList.add('live');
+      // nội dung
+      const durMin=Math.round((p.stop-p.start)/60000);
+      card.innerHTML = `<div class="title">${durMin<=5?'…':(p.title||'Chương trình')}</div><div class="info">${fmt(p.start)}–${fmt(p.stop)}</div>`;
+      card.title = `${fmt(p.start)}–${fmt(p.stop)} · ${p.title}`;
+      card.addEventListener('click',()=>openSheet(c,p));
+      rows.appendChild(card);
+    });
+  });
+
+  drawNowLine(totalH); // đường NOW
+}
+
+function drawNowLine(totalH){
+  const nl=document.getElementById('nowLine'); const now=new Date();
+  if(now<state.dayStart || now>state.dayEnd){ nl.hidden=true; return; }
+  const top=((now-state.dayStart)/60000)/60*SLOT_H;
+  nl.hidden=false; nl.style.top = top+'px'; nl.style.height='2px';
+}
+
+/* ---------- Popup chi tiết ---------- */
+function openSheet(channel,p){
+  const sheet=document.getElementById('sheet');
+  document.getElementById('sheetTitle').textContent=p.title||'Chương trình';
+  const meta=document.getElementById('sheetMeta'); meta.innerHTML='';
+  const dur=Math.round((p.stop-p.start)/60000);
+  const durStr = dur>=60?`${Math.floor(dur/60)}h${dur%60?dur%60:''}`:`${dur} phút`;
+  [channel?.name||channel?.id, `${fmt(p.start)}–${fmt(p.stop)}`, durStr, p.category||null].filter(Boolean)
+  .forEach(t=>{ const c=document.createElement('span'); c.className='chip'; c.textContent=t; meta.appendChild(c); });
+  document.getElementById('sheetDesc').textContent=p.desc||'—';
+  sheet.showModal();
+}
+
+/* ---------- Load helpers ---------- */
+async function loadFromUrl(u){
+  // dùng proxy của bạn nếu cần CORS: /proxy.php?url=
+  const res = await fetch(`/proxy.php?url=${encodeURIComponent(u)}`);
+  if(!res.ok) throw new Error('Fetch thất bại: '+res.status);
+  const text = await res.text();
+  return parseXml(text);
+}
+async function build(src){
+  const data = typeof src==='string' ? await loadFromUrl(src) : src;
+  state.data = data;
+  const picked=chooseDateFromData(data);
+  document.getElementById('datePicker').value = picked.toISOString().slice(0,10);
+  buildDay(picked);
+  const f=filterData(data);
+  renderVertical(f);
+  setStatsLine();
+}
+
+/* ---------- About helpers ---------- */
+function setTimezoneLine(){
+  const tz = Intl.DateTimeFormat().resolvedOptions().timeZone || 'Local';
+  const offMin = -new Date().getTimezoneOffset(); const s = offMin>=0?'+':'-';
+  const abs=Math.abs(offMin); const hh=String(Math.floor(abs/60)).padStart(2,'0'); const mm=String(abs%60).padStart(2,'0');
+  const el=document.getElementById('tzLine'); if(el) el.textContent = `Múi giờ hiện tại: ${tz} (GMT${s}${hh}:${mm})`;
+}
+function setStatsLine(){
+  const el=document.getElementById('statsLine'); if(!el) return;
+  const ch=state?.data?.channels?.length||0; const pr=state?.data?.progs?.length||0;
+  el.textContent = `Thống kê: ${ch} kênh · ${pr} chương trình`;
+}
+
+/* ---------- Events ---------- */
+window.addEventListener('DOMContentLoaded', ()=>{
+  const urlIn=document.getElementById('epgUrl');
+  document.getElementById('loadBtn').addEventListener('click',()=>build(urlIn.value.trim()));
+  const fIn=document.getElementById('fileIn');
+  document.getElementById('openFile').addEventListener('click',()=>fIn.click());
+  fIn.addEventListener('change',async e=>{const f=e.target.files?.[0]; if(!f) return; const txt=await f.text(); build(parseXml(txt));});
+
+  document.getElementById('datePicker').addEventListener('change',()=>{
+    if(!state.data) return; const d=safeDate(document.getElementById('datePicker').value); if(!d) return;
+    buildDay(d); renderVertical(filterData(state.data));
+  });
+
+  document.getElementById('nowBtn').addEventListener('click',()=>{
+    const wrap=document.getElementById('gridWrap'); const n=new Date();
+    if(n<state.dayStart||n>state.dayEnd) return;
+    const top=((n-state.dayStart)/60000)/60*SLOT_H - 100;
+    wrap.scrollTo({top: Math.max(0, top), behavior:'smooth'});
+  });
+
+  // About dialog
+  const about=document.getElementById('about');
+  document.getElementById('aboutBtn').addEventListener('click',()=>{ setTimezoneLine(); setStatsLine(); about.showModal(); });
+  document.getElementById('aboutClose').addEventListener('click',()=>about.close());
+
+  // Nạp mặc định
+  build(urlIn.value);
+});
+// cập nhật đường NOW mỗi phút
+setInterval(()=>drawNowLineSafe(),60000);
+function drawNowLineSafe(){ const rows=document.getElementById('rows'); if(!rows) return; drawNowLine(); }
+function drawNowLine(){ const f = filterData(state.data||{channels:[],progs:[]}); const hours = Math.ceil((state.dayEnd-state.dayStart)/3600000); const totalH = hours*SLOT_H; drawNowLineImpl(totalH); }
+function drawNowLineImpl(totalH){ const nl=document.getElementById('nowLine'); if(!nl) return; const now=new Date(); if(now<state.dayStart||now>state.dayEnd){ nl.hidden=true; return;} const top=((now-state.dayStart)/60000)/60*SLOT_H; nl.hidden=false; nl.style.top=top+'px'; }
+</script>
+</body>
+</html>
