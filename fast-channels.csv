@@ -2,6 +2,7 @@ id,name,logo,type,genre,curatedSlugs,defaultDuration,maxMovies
 fast-hanh-dong,Phim Hành Động 24/7,,genre,hanh-dong,,90,20
 fast-tinh-cam,Phim Tình Cảm 24/7,,genre,tinh-cam,,90,20
 fast-hai-huoc,Phim Hài 24/7,,genre,hai-huoc,,90,20
-fast-phim-han,K Dramas 24/7,,list,phim-bo?country=han-quoc,,45,100
+fast-phim-han,Korean Dramas 24/7,,list,phim-bo?country=han-quoc,,45,100
+fast-family-shows,Family Shows 24/7,,list,tv-shows?category=gia-dinh,,45,100
 fast-hells-kitchen,Hell's Kitchen 24/7,,curated,,nha-bep-dia-nguc-phan-21|nha-bep-dia-nguc-phan-20|nha-bep-dia-nguc-phan-19|nha-bep-dia-nguc-phan-18|nha-bep-dia-nguc-phan-17,42,100
 fast-chay-di-cho-chi,Chạy Đi Chờ Chi 24/7,,curated,,chay-di-cho-chi-phan-1|chay-di-cho-chi-phan-2,,100
