@@ -1,6 +1,6 @@
 type,value,description
 genre,phim-18,Loại trừ phim 18+
 genre,slug-genre-here,Loại trừ phim theo thể loại
-slug,ten-phim-cu-the,Loại trừ 1 phim cụ thể theo slug
-country,trung-quoc,Loại trừ phim theo country
+slug,thuoc-tinh-yeu,Loại trừ 1 phim cụ thể theo slug
+country,slug-country,Loại trừ phim theo country
 list,slug-list-here,Loại trừ toàn bộ danh sách phim
