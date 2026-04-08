@@ -2,7 +2,7 @@ id,name,logo,type,genre,curatedSlugs,defaultDuration,maxMovies
 fast-m-hanh-dong,Action Movies,,genre,hanh-dong,,90,20
 fast-m-tinh-cam,Romantic Movies,,genre,tinh-cam,,90,20
 fast-m-hai-huoc,Comedy Movies,,genre,hai-huoc,,90,20
-fast-m-hoat-hinh-gia-dinh,Family Movies,,list-m,hoat-hinh?category=gia-dinh,,90,100
+fast-m-hoat-hinh-gia-dinh,FamilyToon Cinema,,list-m,hoat-hinh?category=gia-dinh,,90,100
 fast-s-han-quoc,Korean Shows,,list-s,phim-bo?country=han-quoc,,45,100
 fast-s-tinh-cam,Romantic Shows,,list-s,phim-bo?category=tinh-cam,,45,100
 fast-s-gia-dinh,Family Shows,,list-s,tv-shows?category=gia-dinh,,45,100
