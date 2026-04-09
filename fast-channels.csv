@@ -1,4 +1,5 @@
 id,name,logo,type,genre,curatedSlugs,defaultDuration,maxMovies
+fast-m-cinenow,CineNow,,list-m,phim-chieu-rap,,90,20
 fast-m-hanh-dong,Action Movies,,genre,hanh-dong,,90,20
 fast-m-tinh-cam,Romantic Movies,,genre,tinh-cam,,90,20
 fast-m-hai-huoc,Comedy Movies,,genre,hai-huoc,,90,20
