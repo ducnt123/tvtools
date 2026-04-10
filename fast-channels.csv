@@ -1,19 +1,20 @@
 id,name,logo,type,genre,curatedSlugs,defaultDuration,maxMovies
 fast-m-cinenow,CineNOW,,list-m,phim-chieu-rap,,90,20
-fast-m-hanh-dong,Action Movies,,genre,hanh-dong,,90,20
-fast-m-tinh-cam,Romantic Movies,,genre,tinh-cam,,90,20
-fast-m-hai-huoc,Comedy Movies,,genre,hai-huoc,,90,20
+fast-m-hanh-dong,Action Movies,,genre-m,hanh-dong,,90,20
+fast-m-tinh-cam,Romantic Movies,,genre-m,tinh-cam,,90,20
+fast-m-hai-huoc,Comedy Movies,,genre-m,hai-huoc,,90,20
 fast-m-hoat-hinh-gia-dinh,FamilyToon Cinema,,list-m,hoat-hinh?category=gia-dinh,,90,100
 fast-s-han-quoc,Korean Shows,,list-s,phim-bo?country=han-quoc,,45,100
 fast-s-tinh-cam,Romantic Shows,,list-s,phim-bo?category=tinh-cam,,45,100
 fast-s-gia-dinh,Family Shows,,list-s,tv-shows?category=gia-dinh,,45,100
-fast-hells-kitchen,Hell's Kitchen 24/7,,curated,,nha-bep-dia-nguc-phan-21|nha-bep-dia-nguc-phan-20|nha-bep-dia-nguc-phan-19|nha-bep-dia-nguc-phan-18|nha-bep-dia-nguc-phan-17,42,100
-fast-chay-di-cho-chi,Chạy Đi Chờ Chi 24/7,,curated,,chay-di-cho-chi-phan-1|chay-di-cho-chi-phan-2,,100
-fast-conan,Detective Conan 24/7,,curated,,tham-tu-lung-danh-conan,,100
-fast-yt-music24-hits,Music24 Pop Certified,,youtube,,RDCLAK5uy_lBNUteBRencHzKelu5iDHwLF6mYqjL-JU,,50
+fast-docu,Documentaries,,genre,tai-lieu,,90,30
+fast-hells-kitchen,Hell's Kitchen,,curated,,nha-bep-dia-nguc-phan-21|nha-bep-dia-nguc-phan-20|nha-bep-dia-nguc-phan-19|nha-bep-dia-nguc-phan-18|nha-bep-dia-nguc-phan-17,42,100
+fast-chay-di-cho-chi,Chạy Đi Chờ Chi,,curated,,chay-di-cho-chi-phan-1|chay-di-cho-chi-phan-2,,100
+fast-conan,Detective Conan,,curated,,tham-tu-lung-danh-conan,,100
+fast-yt-music24-hits,Music24 Hits,,youtube,,RDCLAK5uy_lBNUteBRencHzKelu5iDHwLF6mYqjL-JU,,50
 fast-yt-music24-kpop,Music24 K-Pop,,youtube,,PLBxrayLhMyrlCLlljw0C-93bQwgIVLWEE,,50
 fast-yt-music24-dance,Music24 Dance,,youtube,,PLO7-VO1D0_6MRJ9Js0_HzHymB8jL2JSyd,,50
 fast-yt-music24-2010, Music24 2010s,,youtube,,RDCLAK5uy_m0s0ctV0GL5LQ-ezVkvlEeENYDuSxxLa8,,50
-fast-yt-umftv,Ultra Music Festival 2026,,youtube,,PLBg1SJiXSxfJ6lee3le9qRtIFLkdFwd8E,,50
+fast-yt-umftv,Ultra Music Festival,,youtube,,PLBg1SJiXSxfJ6lee3le9qRtIFLkdFwd8E,,50
 fast-yt-nhato,NhàTO, ,youtube,,UULF1v9QQOcU8ONIUN91Srswiw,,50
-fast-tom,Tom and Jerry 24/7,,curated,,tom-va-jerry-1940,8,100
+fast-tom,Tom and Jerry,,curated,,tom-va-jerry-1940,8,100
