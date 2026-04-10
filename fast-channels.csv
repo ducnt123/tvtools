@@ -7,7 +7,8 @@ fast-m-hoat-hinh-gia-dinh,FamilyToon Cinema,,list-m,hoat-hinh?category=gia-dinh,
 fast-s-han-quoc,Korean Shows,,list-s,phim-bo?country=han-quoc,,45,100
 fast-s-tinh-cam,Romantic Shows,,list-s,phim-bo?category=tinh-cam,,45,100
 fast-s-gia-dinh,Family Shows,,list-s,tv-shows?category=gia-dinh,,45,100
-fast-docu,Documentaries,,genre,tai-lieu,,50,30
+fast-doc,Documentaries,,genre,tai-lieu,,50,50
+fast-soundstage,SoundStage TV,,genre,am-nhac,,50,50
 fast-hells-kitchen,Hell's Kitchen,,curated,,nha-bep-dia-nguc-phan-21|nha-bep-dia-nguc-phan-20|nha-bep-dia-nguc-phan-19|nha-bep-dia-nguc-phan-18|nha-bep-dia-nguc-phan-17,42,100
 fast-chay-di-cho-chi,Chạy Đi Chờ Chi,,curated,,chay-di-cho-chi-phan-1|chay-di-cho-chi-phan-2,,100
 fast-conan,Detective Conan,,curated,,tham-tu-lung-danh-conan,,100
