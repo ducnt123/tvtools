@@ -1,9 +1,10 @@
 id,name,logo,type,genre,curatedSlugs,defaultDuration,maxMovies,group
-fast-m-cinenow,Movie24 Premiere,,list-m,phim-chieu-rap,,90,20,Phim
+fast-m-prem,Movie24 Premiere,,list-m,phim-chieu-rap,,90,20,Phim
 fast-m-hanh-dong,Movie24 Action,,genre-m,hanh-dong,,90,20,Phim
 fast-m-tinh-cam,Movie24 Romance,,genre-m,tinh-cam,,90,20,Phim
 fast-m-hai-huoc,Movie24 Comedy,,genre-m,hai-huoc,,90,20,Phim
-fast-m-hoat-hinh-gia-dinh,CineToon,,list-m,hoat-hinh?category=gia-dinh,,90,100,Phim
+fast-m-hoat-hinh-gia-dinh,Family Cine,,list-m,hoat-hinh?category=gia-dinh,,90,100,Hoạt hình
+fast-hoat-hinh-gia-dinh,ToonMax,,list,hoat-hinh?category=gia-dinh,,90,100,Hoạt hình
 fast-s-han-quoc,Korean Shows,,list-s,phim-bo?country=han-quoc,,45,100,Giải trí
 fast-s-tinh-cam,Romantic Shows,,list-s,phim-bo?category=tinh-cam,,45,100,Giải trí
 fast-s-gia-dinh,Family Shows,,list-s,tv-shows?category=gia-dinh,,45,100,Giải trí
