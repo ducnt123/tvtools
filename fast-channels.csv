@@ -1,9 +1,9 @@
 id,name,logo,type,genre,curatedSlugs,defaultDuration,maxMovies,group
-fast-m-cinenow,CineNOW,,list-m,phim-chieu-rap,,90,20,Phim
-fast-m-hanh-dong,Action Movies,,genre-m,hanh-dong,,90,20,Phim
-fast-m-tinh-cam,Romantic Movies,,genre-m,tinh-cam,,90,20,Phim
-fast-m-hai-huoc,Comedy Movies,,genre-m,hai-huoc,,90,20,Phim
-fast-m-hoat-hinh-gia-dinh,FamilyToon Cinema,,list-m,hoat-hinh?category=gia-dinh,,90,100,Phim
+fast-m-cinenow,Movie24 Premiere,,list-m,phim-chieu-rap,,90,20,Phim
+fast-m-hanh-dong,Movie24 Action,,genre-m,hanh-dong,,90,20,Phim
+fast-m-tinh-cam,Movie24 Romance,,genre-m,tinh-cam,,90,20,Phim
+fast-m-hai-huoc,Movie24 Comedy,,genre-m,hai-huoc,,90,20,Phim
+fast-m-hoat-hinh-gia-dinh,CineToon,,list-m,hoat-hinh?category=gia-dinh,,90,100,Phim
 fast-s-han-quoc,Korean Shows,,list-s,phim-bo?country=han-quoc,,45,100,Giải trí
 fast-s-tinh-cam,Romantic Shows,,list-s,phim-bo?category=tinh-cam,,45,100,Giải trí
 fast-s-gia-dinh,Family Shows,,list-s,tv-shows?category=gia-dinh,,45,100,Giải trí
@@ -20,3 +20,4 @@ fast-yt-music24-2010, Music24 2010s,,youtube,,RDCLAK5uy_m0s0ctV0GL5LQ-ezVkvlEeEN
 fast-yt-umftv,Ultra Music Festival,,youtube,,PLBg1SJiXSxfJ6lee3le9qRtIFLkdFwd8E,,50,Âm nhạc
 fast-yt-nhato,NhàTO, ,youtube,,UULF1v9QQOcU8ONIUN91Srswiw,,50,Kiến thức & Lối sống
 fast-tom,Tom and Jerry,,curated,,tom-va-jerry-1940,8,100,Hoạt hình
+fast-yt-hanoifood,Hà Nội Food, ,youtube,,UULFJCRKhbJM4sqyOcS0ETU2Ig,,50,Ẩm thực
