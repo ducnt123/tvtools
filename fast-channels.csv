@@ -4,11 +4,12 @@ fast-m-hanh-dong,Movie24 Action,,genre-m,hanh-dong,,90,20,Phim
 fast-m-tinh-cam,Movie24 Romance,,genre-m,tinh-cam,,90,20,Phim
 fast-m-hai-huoc,Movie24 Comedy,,genre-m,hai-huoc,,90,20,Phim
 fast-m-hoat-hinh-gia-dinh,Family Cine,,list-m,hoat-hinh?category=gia-dinh,,90,100,Hoạt hình
-fast-hoat-hinh-gia-dinh,ToonMax,,list,hoat-hinh?category=gia-dinh,,90,100,Hoạt hình
+fast-hoat-hinh-gia-dinh,Cartoon+,,list,hoat-hinh?category=gia-dinh,,90,100,Hoạt hình
 fast-s-han-quoc,Korean Shows,,list-s,phim-bo?country=han-quoc,,45,100,Giải trí
 fast-s-tinh-cam,Romantic Shows,,list-s,phim-bo?category=tinh-cam,,45,100,Giải trí
 fast-s-gia-dinh,Family Shows,,list-s,tv-shows?category=gia-dinh,,45,100,Giải trí
 fast-s-viet-dramas,Vietnamese Dramas,,list-s,phim-bo?country=viet-nam,,45,100,Giải trí
+fast-hinh-su,Crime 24/7,,genre,hinh-su,,50,20,Hình sự
 fast-doc,Documentaries,,genre,tai-lieu,,50,50,Kiến thức & Lối sống
 fast-soundstage,SoundStage,,genre,am-nhac,,50,50,Âm nhạc
 fast-hells-kitchen,Hell's Kitchen,,curated,,nha-bep-dia-nguc-phan-21|nha-bep-dia-nguc-phan-20|nha-bep-dia-nguc-phan-19|nha-bep-dia-nguc-phan-18|nha-bep-dia-nguc-phan-17,42,100,Ẩm thực
