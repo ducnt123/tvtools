@@ -1,42 +1,42 @@
 id,name,logo,type,genre,curatedSlugs,defaultDuration,maxMovies,group,isYTMusic
-fast-premiere,CineNOW,,list-m,phim-chieu-rap,,90,20,Phim
-fast-m-hanh-dong,Action Movies,,genre-m,hanh-dong,,90,20,Phim
-fast-m-tinh-cam,Romantic Movies,,genre-m,tinh-cam,,90,20,Phim
-fast-m-hai-huoc,Comedy Movies,,genre-m,hai-huoc,,90,20,Phim
-fast-m-vien-tuong,Sci-Fi Movies,,list-m,phim-le?category=vien-tuong,,90,20,Phim
-fast-m-hinh-su,Crime Movies,,list-m,phim-le?category=hinh-su,,90,20,Phim
-fast-m-co-trang,Period Movies,,list-m,phim-le?category=co-trang,,90,20,Phim
-fast-m-kinh-dien,Classic Movies,,list-m,phim-le?category=kinh-dien,,90,20,Phim
-fast-m-gia-dinh,Family Movies,,list-m,phim-le?category=gia-dinh,,90,20,Phim
-fast-m-kinh-di,Horror Movies,,list-m,phim-le?category=kinh-di,,90,20,Phim
-fast-m-hoat-hinh-gia-dinh,Family Toon Movies,,list-m,hoat-hinh?category=gia-dinh,,90,100,Hoạt hình
-fast-hoat-hinh-gia-dinh,Cartoon+,,list,hoat-hinh?category=gia-dinh,,90,100,Hoạt hình
-fast-s-gia-dinh,Family Shows,,list,tv-shows?category=gia-dinh,,45,100,TV Shows/Series
-fast-s-hinh-su,Crime Dramas,,list,phim-bo?category=hinh-su,,50,20,TV Shows/Series
-fast-s-kinh-di,Horror Shows,,list,phim-bo?category=kinh-di,,45,100,TV Shows/Series
-fast-s-viet-nam,Vietnamese Shows,,list,phim-bo?country=viet-nam,,45,100,TV Shows/Series
-fast-s-au-my,English Shows,,list,phim-bo?country=au-my,,,,TV Shows/Series
-fast-s-han-quoc,Korean Shows,,list,phim-bo?country=han-quoc,,45,100,TV Shows/Series
-fast-s-nhat-ban,Japanese Shows,,list,phim-bo?country=nhat-ban,,45,100,TV Shows/Series
-fast-s-trung-quoc,Chinese Shows,,list,phim-bo?country=trung-quoc,,45,100,TV Shows/Series
-fast-s-thai-lan,Thai Shows,,list,phim-bo?country=thai-lan,,45,100,TV Shows/Series
-fast-s-tinh-cam,Romantic Shows,,list,phim-bo?category=tinh-cam,,45,100,TV Shows/Series
-fast-s-dat-va-nguoi,Đất Và Người,https://ophim17.cc/_next/image?url=https%3A%2F%2Fimg.ophim.live%2Fuploads%2Fmovies%2Fdat-va-nguoi-thumb.jpg&w=1920&q=75,curated,,dat-va-nguoi,45,50,TV Shows/Series
-fast-s-song-o-day-song,Sóng Ở Đáy Sông,https://ophim17.cc/_next/image?url=https%3A%2F%2Fimage.tmdb.org%2Ft%2Fp%2Fw780%2F9Zx9YEg9SqkdzP9Ga7qNPVWH93d.jpg&w=1080&q=75,curated,,song-o-day-song,100,50,TV Shows/Series
-fast-s-dat-phuong-nam,Đất Phương Nam,https://ophim17.cc/_next/image?url=https%3A%2F%2Fimage.tmdb.org%2Ft%2Fp%2Fw780%2FoRoXkNXKTpdk5R7AxXqMZ0RtK9M.jpg&w=1080&q=75,curated,,dat-phuong-nam,55,50,TV Shows/Series
-fast-doc,Documentaries,,genre,tai-lieu,,50,50,Kiến thức & Lối sống
-fast-chay-di-cho-chi,Chạy Đi Chờ Chi,,curated,,chay-di-cho-chi-phan-1|chay-di-cho-chi-phan-2,,100,Thực tế
-fast-food,Food TV,,curated,,am-thuc-duong-pho-my-latinh|am-thuc-duong-pho-hoa-ky|am-thuc-duong-pho-chau-a|luke-nguyen-tren-chuyen-tau-bac-nam,40,50,Ẩm thực
-fast-hells-kitchen,Hell's Kitchen,,curated,,nha-bep-dia-nguc-phan-21|nha-bep-dia-nguc-phan-20|nha-bep-dia-nguc-phan-19|nha-bep-dia-nguc-phan-18|nha-bep-dia-nguc-phan-17,42,100,Ẩm thực
-fast-yt-hanoifood,Hanoi Food, ,youtube,,UULFJCRKhbJM4sqyOcS0ETU2Ig,,50,Ẩm thực
-fast-conan,Detective Conan,,curated,,tham-tu-lung-danh-conan,,100,Hoạt hình
-fast-soundstage,SoundStage,,genre,am-nhac,,50,50,Âm nhạc
-fast-yt-music24-hits,Music24 Hits,,youtube,,RDCLAK5uy_lBNUteBRencHzKelu5iDHwLF6mYqjL-JU,,50,Âm nhạc
-fast-yt-music24-kpop,Music24 K-Pop,,youtube,,PLBxrayLhMyrlCLlljw0C-93bQwgIVLWEE,,50,Âm nhạc
-fast-yt-music24-dance,Music24 Dance,,youtube,,PLO7-VO1D0_6MRJ9Js0_HzHymB8jL2JSyd,,50,Âm nhạc
-fast-yt-music24-2010,Music24 2010s,,youtube,,RDCLAK5uy_m0s0ctV0GL5LQ-ezVkvlEeENYDuSxxLa8,,50,Âm nhạc
-fast-yt-umftv,Ultra Music Festival,,youtube,,PLBg1SJiXSxfJ6lee3le9qRtIFLkdFwd8E,,50,Âm nhạc
-fast-yt-nhato,NhàTO, ,youtube,,UULF1v9QQOcU8ONIUN91Srswiw,,50,Kiến thức & Lối sống
-fast-tom-and-jerry-op,Tom and Jerry,,curated,,tom-va-jerry-1940,8,100,Hoạt hình
-fast-tom-and-jerry-golden,Tom and Jerry: Golden Era,,youtube,,UULVU0rIMU3k_AsVA8d6N1B03w,,1,Hoạt hình
-fast-yt-ridiculousness,Ridiculousness,https://image.tmdb.org/t/p/original/cMMYqB8I1Y72iFWNyZiklukGFzz.jpg,youtube,,PLIpxbGHwF-XByV4-fyM9FcBaztNDk0tEP,,50,Hài
+fast-premiere,CineNOW,,list-m,phim-chieu-rap,,90,20,Phim,
+fast-m-hanh-dong,Action Movies,,genre-m,hanh-dong,,90,20,Phim,
+fast-m-tinh-cam,Romantic Movies,,genre-m,tinh-cam,,90,20,Phim,
+fast-m-hai-huoc,Comedy Movies,,genre-m,hai-huoc,,90,20,Phim,
+fast-m-vien-tuong,Sci-Fi Movies,,list-m,phim-le?category=vien-tuong,,90,20,Phim,
+fast-m-hinh-su,Crime Movies,,list-m,phim-le?category=hinh-su,,90,20,Phim,
+fast-m-co-trang,Period Movies,,list-m,phim-le?category=co-trang,,90,20,Phim,
+fast-m-kinh-dien,Classic Movies,,list-m,phim-le?category=kinh-dien,,90,20,Phim,
+fast-m-gia-dinh,Family Movies,,list-m,phim-le?category=gia-dinh,,90,20,Phim,
+fast-m-kinh-di,Horror Movies,,list-m,phim-le?category=kinh-di,,90,20,Phim 
+fast-m-hoat-hinh-gia-dinh,Family Toon Movies,,list-m,hoat-hinh?category=gia-dinh,,90,100,Hoạt hình,
+fast-hoat-hinh-gia-dinh,Cartoon+,,list,hoat-hinh?category=gia-dinh,,90,100,Hoạt hình,
+fast-s-gia-dinh,Family Shows,,list,tv-shows?category=gia-dinh,,45,100,TV Shows/Series,
+fast-s-hinh-su,Crime Dramas,,list,phim-bo?category=hinh-su,,50,20,TV Shows/Series,
+fast-s-kinh-di,Horror Shows,,list,phim-bo?category=kinh-di,,45,100,TV Shows/Series,
+fast-s-viet-nam,Vietnamese Shows,,list,phim-bo?country=viet-nam,,45,100,TV Shows/Series,
+fast-s-au-my,English Shows,,list,phim-bo?country=au-my,,,,TV Shows/Series,
+fast-s-han-quoc,Korean Shows,,list,phim-bo?country=han-quoc,,45,100,TV Shows/Series,
+fast-s-nhat-ban,Japanese Shows,,list,phim-bo?country=nhat-ban,,45,100,TV Shows/Series,
+fast-s-trung-quoc,Chinese Shows,,list,phim-bo?country=trung-quoc,,45,100,TV Shows/Series,
+fast-s-thai-lan,Thai Shows,,list,phim-bo?country=thai-lan,,45,100,TV Shows/Series,
+fast-s-tinh-cam,Romantic Shows,,list,phim-bo?category=tinh-cam,,45,100,TV Shows/Series,
+fast-s-dat-va-nguoi,Đất Và Người,https://ophim17.cc/_next/image?url=https%3A%2F%2Fimg.ophim.live%2Fuploads%2Fmovies%2Fdat-va-nguoi-thumb.jpg&w=1920&q=75,curated,,dat-va-nguoi,45,50,TV Shows/Series,
+fast-s-song-o-day-song,Sóng Ở Đáy Sông,https://ophim17.cc/_next/image?url=https%3A%2F%2Fimage.tmdb.org%2Ft%2Fp%2Fw780%2F9Zx9YEg9SqkdzP9Ga7qNPVWH93d.jpg&w=1080&q=75,curated,,song-o-day-song,100,50,TV Shows/Series,
+fast-s-dat-phuong-nam,Đất Phương Nam,https://ophim17.cc/_next/image?url=https%3A%2F%2Fimage.tmdb.org%2Ft%2Fp%2Fw780%2FoRoXkNXKTpdk5R7AxXqMZ0RtK9M.jpg&w=1080&q=75,curated,,dat-phuong-nam,55,50,TV Shows/Series,
+fast-doc,Documentaries,,genre,tai-lieu,,50,50,Kiến thức & Lối sống,
+fast-chay-di-cho-chi,Chạy Đi Chờ Chi,,curated,,chay-di-cho-chi-phan-1|chay-di-cho-chi-phan-2,,100,Thực tế,
+fast-food,Food TV,,curated,,am-thuc-duong-pho-my-latinh|am-thuc-duong-pho-hoa-ky|am-thuc-duong-pho-chau-a|luke-nguyen-tren-chuyen-tau-bac-nam,40,50,Ẩm thực,
+fast-hells-kitchen,Hell's Kitchen,,curated,,nha-bep-dia-nguc-phan-21|nha-bep-dia-nguc-phan-20|nha-bep-dia-nguc-phan-19|nha-bep-dia-nguc-phan-18|nha-bep-dia-nguc-phan-17,42,100,Ẩm thực,
+fast-yt-hanoifood,Hanoi Food, ,youtube,,UULFJCRKhbJM4sqyOcS0ETU2Ig,,50,Ẩm thực,
+fast-conan,Detective Conan,,curated,,tham-tu-lung-danh-conan,,100,Hoạt hình,
+fast-soundstage,SoundStage,,genre,am-nhac,,50,50,Âm nhạc,
+fast-yt-music24-hits,Music24 Hits,,youtube,,RDCLAK5uy_lBNUteBRencHzKelu5iDHwLF6mYqjL-JU,,50,Âm nhạc,
+fast-yt-music24-kpop,Music24 K-Pop,,youtube,,PLBxrayLhMyrlCLlljw0C-93bQwgIVLWEE,,50,Âm nhạc,
+fast-yt-music24-dance,Music24 Dance,,youtube,,PLO7-VO1D0_6MRJ9Js0_HzHymB8jL2JSyd,,50,Âm nhạc,
+fast-yt-music24-2010,Music24 2010s,,youtube,,RDCLAK5uy_m0s0ctV0GL5LQ-ezVkvlEeENYDuSxxLa8,,50,Âm nhạc,
+fast-yt-umftv,Ultra Music Festival,,youtube,,PLBg1SJiXSxfJ6lee3le9qRtIFLkdFwd8E,,50,Âm nhạc,
+fast-yt-nhato,NhàTO, ,youtube,,UULF1v9QQOcU8ONIUN91Srswiw,,50,Kiến thức & Lối sống,
+fast-tom-and-jerry-op,Tom and Jerry,,curated,,tom-va-jerry-1940,8,100,Hoạt hình,
+fast-tom-and-jerry-golden,Tom and Jerry: Golden Era,,youtube,,UULVU0rIMU3k_AsVA8d6N1B03w,,1,Hoạt hình,
+fast-yt-ridiculousness,Ridiculousness,https://image.tmdb.org/t/p/original/cMMYqB8I1Y72iFWNyZiklukGFzz.jpg,youtube,,PLIpxbGHwF-XByV4-fyM9FcBaztNDk0tEP,,50,Hài,
