@@ -1,4 +1,4 @@
-id,name,logo,type,genre,curatedSlugs,defaultDuration,maxMovies,group
+id,name,logo,type,genre,curatedSlugs,defaultDuration,maxMovies,group,isYTMusic
 fast-premiere,CineNOW,,list-m,phim-chieu-rap,,90,20,Phim
 fast-m-hanh-dong,Action Movies,,genre-m,hanh-dong,,90,20,Phim
 fast-m-tinh-cam,Romantic Movies,,genre-m,tinh-cam,,90,20,Phim
