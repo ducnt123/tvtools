@@ -9,6 +9,7 @@ fast-m-co-trang,Period Movies,,list-m,phim-le?category=co-trang,,90,20,Phim,
 fast-m-kinh-dien,Classic Movies,,list-m,phim-le?category=kinh-dien,,90,20,Phim,
 fast-m-gia-dinh,Family Movies,,list-m,phim-le?category=gia-dinh,,90,20,Phim,
 fast-m-kinh-di,Horror Movies,,list-m,phim-le?category=kinh-di,,90,20,Phim,
+fast-yt-movie-trailers,Movie Trailers,,youtube,,PLScC8g4bqD4513iYojk9PJcNzmGUskjuw|PLScC8g4bqD46cj5r1HDygW1xwMlGgEDqH|PLScC8g4bqD45ReJItgk4choskmsD5SLoS,,50,Phim,yes
 fast-m-hoat-hinh-gia-dinh,Family Toon Movies,,list-m,hoat-hinh?category=gia-dinh,,90,100,Hoạt hình,
 fast-hoat-hinh-gia-dinh,Cartoon+,,list,hoat-hinh?category=gia-dinh,,90,100,Hoạt hình,
 fast-s-gia-dinh,Family Shows,,list,tv-shows?category=gia-dinh,,45,100,TV Shows/Series,
