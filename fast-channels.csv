@@ -1,5 +1,5 @@
 id,name,logo,type,genre,curatedSlugs,defaultDuration,maxMovies,group,isYTMusic
-fast-premiere,CineNOW,,list-m,phim-chieu-rap,,90,20,Phim,
+fast-premiere,CineNOW,https://i.postimg.cc/L5VLBZtQ/cinenow.png,list-m,phim-chieu-rap,,90,20,Phim,
 fast-m-hanh-dong,Action Movies,https://i.postimg.cc/3wj6GtyC/action-movies.png,genre-m,hanh-dong,,90,20,Phim,
 fast-m-tinh-cam,Romantic Movies,https://i.postimg.cc/bv0MnmGx/romantic-movies.png,genre-m,tinh-cam,,90,20,Phim,
 fast-m-hai-huoc,Comedy Movies,,genre-m,hai-huoc,,90,20,Phim,
