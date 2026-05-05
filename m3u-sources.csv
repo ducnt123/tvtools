@@ -1,3 +1,4 @@
 id,name,url,enabled,group-filter,protocol-filte
 vietanhtv,VietAnhTV,https://vietanhtv.id.vn/tv/tv.m3u,false,,hls
-hieutqs,hieutqs,https://raw.githubusercontent.com/hieu-TQS/TV/refs/heads/main/TV.m3u,true,,
+hieutqs,hieutqs,https://raw.githubusercontent.com/hieu-TQS/TV/refs/heads/main/TV.m3u,false,,
+hoiquanclick,hoiquanclick,https://xem.hoiquan.click,true,,
