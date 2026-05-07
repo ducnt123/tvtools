@@ -1,5 +1,5 @@
 id,name,logo,type,genre,curatedSlugs,defaultDuration,maxMovies,group,isYTMusic
-fast-premiere,Stream24 Spotlight,https://i.postimg.cc/ZYMfs6CN/stream24-spotlight.png,list-m,phim-chieu-rap,,90,20,Phim,
+fast-premiere,Stream24 Premiere,https://i.postimg.cc/vmhZ8Lv1/stream24-premiere.png,list-m,phim-chieu-rap,,90,20,Phim,
 fast-m-hanh-dong,Action Movies,https://i.postimg.cc/3wj6GtyC/action-movies.png,genre-m,hanh-dong,,90,20,Phim,
 fast-m-tinh-cam,Romantic Movies,https://i.postimg.cc/bv0MnmGx/romantic-movies.png,list-m,phim-le?category=tinh-cam,,90,20,Phim,
 fast-m-hai-huoc,Comedy Movies,https://i.postimg.cc/YSk5S5nB/comedy-movies.png,genre-m,hai-huoc,,90,20,Phim,
