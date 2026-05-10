@@ -22,7 +22,7 @@ fast-s-nhat-ban,Japanese Shows,,list,phim-bo?country=nhat-ban,,45,100,TV Shows/D
 fast-s-trung-quoc,Chinese Shows,,list,phim-bo?country=trung-quoc,,45,100,TV Shows/Dramas,
 fast-s-thai-lan,Thai Shows,,list,phim-bo?country=thai-lan,,45,100,TV Shows/Dramas,
 fast-s-tinh-cam,Romantic Shows,https://i.postimg.cc/qRPCmgJW/romantic.png,list,phim-bo?category=tinh-cam,,45,100,TV Shows/Dramas,
-fast-s-friends,Friends,https://i.shgcdn.com/3cfb514f-e69c-4450-8bcc-86f8474e5fb6/-/format/auto/-/preview/3000x3000/-/quality/lighter/,curated,,nhung-nguoi-ban-phan-1|nhung-nguoi-ban-phan-2|nhung-nguoi-ban-phan-3|nhung-nguoi-ban-phan-4|nhung-nguoi-ban-phan-5|nhung-nguoi-ban-phan-6|nhung-nguoi-ban-phan-7|nhung-nguoi-ban-phan-8|nhung-nguoi-ban-phan-9|nhung-nguoi-ban-phan-10,22,50,TV Shows/Dramas,
+fast-s-friends,Friends,https://www.pngall.com/wp-content/uploads/13/Friends-Logo-PNG-Cutout.png,curated,,nhung-nguoi-ban-phan-1|nhung-nguoi-ban-phan-2|nhung-nguoi-ban-phan-3|nhung-nguoi-ban-phan-4|nhung-nguoi-ban-phan-5|nhung-nguoi-ban-phan-6|nhung-nguoi-ban-phan-7|nhung-nguoi-ban-phan-8|nhung-nguoi-ban-phan-9|nhung-nguoi-ban-phan-10,22,50,TV Shows/Dramas,
 fast-s-dat-va-nguoi,Đất Và Người,https://ophim17.cc/_next/image?url=https%3A%2F%2Fimg.ophim.live%2Fuploads%2Fmovies%2Fdat-va-nguoi-thumb.jpg&w=1920&q=75,curated,,dat-va-nguoi,45,50,TV Shows/Dramas,
 fast-s-song-o-day-song,Sóng Ở Đáy Sông,https://ophim17.cc/_next/image?url=https%3A%2F%2Fimage.tmdb.org%2Ft%2Fp%2Fw780%2F9Zx9YEg9SqkdzP9Ga7qNPVWH93d.jpg&w=1080&q=75,curated,,song-o-day-song,100,50,TV Shows/Dramas,
 fast-s-dat-phuong-nam,Đất Phương Nam,https://ophim17.cc/_next/image?url=https%3A%2F%2Fimage.tmdb.org%2Ft%2Fp%2Fw780%2FoRoXkNXKTpdk5R7AxXqMZ0RtK9M.jpg&w=1080&q=75,curated,,dat-phuong-nam,55,50,TV Shows/Dramas,
@@ -32,7 +32,7 @@ fast-food,Food TV,,curated,,am-thuc-duong-pho-my-latinh|am-thuc-duong-pho-hoa-ky
 fast-hells-kitchen,Hell's Kitchen,,curated,,nha-bep-dia-nguc-phan-21|nha-bep-dia-nguc-phan-20|nha-bep-dia-nguc-phan-19|nha-bep-dia-nguc-phan-18|nha-bep-dia-nguc-phan-17,42,100,Ẩm thực,
 fast-yt-hanoifood,Hanoi Food, ,youtube,,UULFJCRKhbJM4sqyOcS0ETU2Ig,,50,Ẩm thực,
 fast-yt-naturescape,Naturescape, ,youtube,,PLUow8OoHt2OOBBEmv9M0DWrHFUhFnSQWv,,5,Thiên nhiên,
-fast-conan,Detective Conan,,curated,,tham-tu-lung-danh-conan,,100,Hoạt hình,
+fast-conan,Detective Conan,https://i.postimg.cc/d10KNB8x/conan.png,curated,,tham-tu-lung-danh-conan,,100,Hoạt hình,
 fast-soundstage,SoundStage,https://i.postimg.cc/7PKwWnHh/soundstage.png,genre,am-nhac,,50,50,Âm nhạc,
 fast-yt-music24-hits,Music24 Hits,https://i.postimg.cc/rwx6M1kn/music24-hits.png,youtube,,RDCLAK5uy_lBNUteBRencHzKelu5iDHwLF6mYqjL-JU|RDCLAK5uy_kmPRjHDECIcuVwnKsx2Ng7fyNgFKWNJFs|RDCLAK5uy_nmS3YoxSwVVQk9lEQJ0UX4ZCjXsW_psU8|RDCLAK5uy_mVJ3RRi_YBfUJnZnQxLAedQQcXHujbUcg|RDCLAK5uy_nSq67AJ2d75MFNJ3j_4ClEtSgC-opBM84,,30,Âm nhạc,yes
 fast-yt-music24-kpop,Music24 K-Pop,https://i.postimg.cc/W4wQJst7/music24-kpop.png,youtube,,RDCLAK5uy_l7wbVbkC-dG5fyEQQsBfjm_z3dLAhYyvo|RDCLAK5uy_l7K78k4EkjcFojhd1617rmUjY-aet6-t0,,50,Âm nhạc,yes
