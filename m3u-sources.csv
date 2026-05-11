@@ -1,4 +1,4 @@
 id,name,url,enabled,group-filter,protocol-filte
 vietanhtv,VietAnhTV,https://vpsttt.vietanhtv.top/tv/,false,,hls
 hieutqs,hieutqs,https://raw.githubusercontent.com/hieu-TQS/TV/refs/heads/main/TV.m3u,false,,
-stream24,stream24,/playlist.m3u,true,,
+stream24,stream24,https://stream24.lovable.app/playlist.m3u,true,,
