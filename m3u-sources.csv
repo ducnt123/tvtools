@@ -1,4 +1,4 @@
 id,name,url,enabled,group-filter,protocol-filte
-vietanhtv,VietAnhTV,https://vpsttt.vietanhtv.top/tv/,true,Gà Vàng TV|ColaTV,hls
+vietanhtv,VietAnhTV,https://vpsttt.vietanhtv.top/tv/,true,VTV|HTV|VTVcab|SCTV|Quốc Tế|Địa Phương,hls
 hieutqs,hieutqs,https://raw.githubusercontent.com/hieu-TQS/TV/refs/heads/main/TV.m3u,false,,
 stream24,stream24,https://stream24.lovable.app/playlist.m3u,false,,
