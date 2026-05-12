@@ -2,3 +2,5 @@
 # Playlist: test
 #EXTINF:-1 tvg-name="SecretAgent" group-title="Radio",SecretAgent
 http://ice1.somafm.com/secretagent-128-aac
+#EXTINF:-1 tvg-name="DSMRAD" group-title="Radio",DSMRAD
+https://dsmrad.io/stream/isics-all
