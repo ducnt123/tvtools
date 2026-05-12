@@ -5,4 +5,4 @@ http://ice1.somafm.com/secretagent-128-aac
 #EXTINF:-1 tvg-name="DSMRAD" group-title="Radio",DSMRAD
 https://dsmrad.io/stream/isics-all
 #EXTINF:-1 tvg-name="shoutcast" group-title="Radio",shoutcast
-http://178.32.137.180:8520/
+http://178.32.137.180:8520/stream
