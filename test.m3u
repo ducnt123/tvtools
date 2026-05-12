@@ -1,0 +1,4 @@
+#EXTM3U x-tvg-url=""
+# Playlist: test
+#EXTINF:-1 tvg-name="SecretAgent" group-title="Radio",SecretAgent
+http://ice1.somafm.com/secretagent-128-aac
