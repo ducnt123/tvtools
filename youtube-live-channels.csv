@@ -5,8 +5,8 @@ yt-phineas-ferb-s1,Phineas And Ferb S1,https://upload.wikimedia.org/wikipedia/en
 hls-lovenature,Love Nature 4K,https://raw.githubusercontent.com/tv-logo/tv-logos/refs/heads/main/countries/canada/love-nature-white-ca.png,https://pb-ehs1glsha1juy.akamaized.net/Love_Nature_4K.m3u8
 yt-tom-and-jerry,Tom and Jerry: Golden Era,https://beam-images.warnermediacdn.com/BEAM_LWM_DELIVERABLES/a500fccc-7dbe-45fb-91d4-023deb64bbc0/2a8a16b70341edef639588982379c0c251c6f961.jpg?host=wbd-images.prod-vod.h264.io&partner=beamcom&w=300&w=300,https://www.youtube.com/embed/400k2SKoeh4?&autoplay=1
 hls-test,Test Stream HLS,,https://demo.unified-streaming.com/k8s/features/stable/video/tears-of-steel/tears-of-steel.ism/.m3u8
-hls-vtv1,VTV1,https://vtvgo-assets.vtvdigital.vn/assets/images/v2/logo/VTV1_150x902_1675159127.webp,https://live-a.fptplay53.net/live/media/vtv1/live247-hls-avc/index.m3u8
-hls-vtv5,VTV5,https://vtvgo-assets.vtvdigital.vn/assets/images/v2/logo/VTV5_150x901_1675158859.webp,https://live.fptplay53.net/live/media/vtv5/live247-hls-avc/index.m3u8
-hls-vietnamtoday,Vietnam Today,https://vtvgo-assets.vtvdigital.vn/assets/images/v2/channel/20250906/2025090623/vvcemcZDle-VIETNAMTODAY-KENHVTVgo-150x90copy.webp,https://live.fptplay53.net/fnxhd1/vntoday_vhls.smil/chunklist_b5000000.m3u8
-hls-france24eng,France 24 English,https://raw.githubusercontent.com/tv-logo/tv-logos/refs/heads/main/countries/international/france-24-english-int.png,https://dash3.antik.sk/live/test_france24_eng/playlist.m3u8
-hls-nhkworldjapan,NHK World - Japan,https://raw.githubusercontent.com/tv-logo/tv-logos/refs/heads/main/countries/international/nhk-world-japan-int.png,https://media-osa.hls.nhkworld.jp/hls/w/live/master.m3u8
+vtv1hd,VTV1,https://vtvgo-assets.vtvdigital.vn/assets/images/v2/logo/VTV1_150x902_1675159127.webp,https://live-a.fptplay53.net/live/media/vtv1/live247-hls-avc/index.m3u8
+vtv5hd,VTV5,https://vtvgo-assets.vtvdigital.vn/assets/images/v2/logo/VTV5_150x901_1675158859.webp,https://live.fptplay53.net/live/media/vtv5/live247-hls-avc/index.m3u8
+vietnamtoday,Vietnam Today,https://vtvgo-assets.vtvdigital.vn/assets/images/v2/channel/20250906/2025090623/vvcemcZDle-VIETNAMTODAY-KENHVTVgo-150x90copy.webp,https://live.fptplay53.net/fnxhd1/vntoday_vhls.smil/chunklist_b5000000.m3u8
+france24eng,France 24 English,https://raw.githubusercontent.com/tv-logo/tv-logos/refs/heads/main/countries/international/france-24-english-int.png,https://dash3.antik.sk/live/test_france24_eng/playlist.m3u8
+nhkworld,NHK World - Japan,https://raw.githubusercontent.com/tv-logo/tv-logos/refs/heads/main/countries/international/nhk-world-japan-int.png,https://media-osa.hls.nhkworld.jp/hls/w/live/master.m3u8
