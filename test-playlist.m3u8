@@ -1,0 +1,3 @@
+#EXTM3U x-tvg-url="https://fzteobupcutxwmtdfblj.supabase.co/functions/v1/iptv-export?type=epg&channel=fast-m-hanh-dong"
+#EXTINF:-1 tvg-id="fast-m-hanh-dong" tvg-name="Action Movies" tvg-logo="https://i.postimg.cc/3wj6GtyC/action-movies.png" group-title="Phim",Action Movies
+https://raw.githubusercontent.com/ducnt123/tvtools/refs/heads/main/test.m3u8
