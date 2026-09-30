@@ -1,8 +1,5 @@
-#EXTM3U x-tvg-url=""
-# Playlist: test
-#EXTINF:-1 tvg-name="SecretAgent" group-title="Radio",SecretAgent
-http://ice1.somafm.com/secretagent-128-aac
-#EXTINF:-1 tvg-name="DSMRAD" group-title="Radio",DSMRAD
-https://dsmrad.io/stream/isics-all
-#EXTINF:-1 tvg-name="shoutcast" group-title="Radio",shoutcast
-http://178.32.137.180:8520/stream
+#EXTM3U
+#EXT-X-VERSION:6
+#EXT-X-START:TIME-OFFSET=2145.0,PRECISE=YES
+#EXT-X-STREAM-INF:BANDWIDTH=3000000
+https://v7.kkphimplayer7.com/20260914/yAAQbzCl/index.m3u8
