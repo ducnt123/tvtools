@@ -5,3 +5,5 @@ https://audio-lss.vov.vn/live/vov1.m3u8
 https://audio-lss.vov.vn/live/vov2.m3u8
 #EXTINF:-1 tvg-id="vov3" tvg-name="VOV3" tvg-logo="https://media.vovmedia.vn/storage/radio/artwork/vov3.webp" group-title="VOV",VOV3
 https://audio-lss.vov.vn/live/vov3.m3u8
+#EXTINF:-1 tvg-id="vovsonata" tvg-name="VOV Sonata" tvg-logo="https://media.vov.vn/vov-static/sonata/logo-sonata.png" group-title="VOV",VOV Sonata
+https://audio-lss.vov.vn/live/sonata.m3u8
