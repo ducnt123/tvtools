@@ -25,3 +25,5 @@ https://
 https://as-hls-ww-live.akamaized.net/pool_01505109/live/ww/bbc_radio_one/bbc_radio_one.isml/bbc_radio_one-audio=96000.norewind.m3u8
 #EXTINF:-1 tvg-id="heart-10s-uk-" tvg-name="Heart 10s" tvg-logo="https://fzteobupcutxwmtdfblj.supabase.co/storage/v1/object/public/channel-logos/18b1cbd9-d306-4a2b-8c1d-5503a798ad11/b61d890a-2bb6-42a9-af18-d12e80d34500.png" group-title="Âm nhạc" use-channel-logo="true",Heart 10s
 https://icecast.thisisdax.com/Heart10sMP3
+#EXTINF:-1 tvg-id="" tvg-name="987 FM" tvg-logo="https://fzteobupcutxwmtdfblj.supabase.co/storage/v1/object/public/channel-logos/18b1cbd9-d306-4a2b-8c1d-5503a798ad11/0825c868-56cb-43f1-a157-0e5f4ac4e212.png" group-title="Âm nhạc" use-channel-logo="true",987 FM
+https://playerservices.streamtheworld.com/api/livestream-redirect/987FMAAC.aac
