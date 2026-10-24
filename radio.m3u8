@@ -21,3 +21,5 @@ https://
 http://
 #EXTINF:-1 tvg-id="vov247" tvg-name="VOV5 English 24/7" tvg-logo="https://media.vovmedia.vn/storage/radio/artwork/vov5-english.webp" group-title="VOV" use-channel-logo="true",VOV5 English 24/7
 https://
+#EXTINF:-1 tvg-id="12284" tvg-name="BBC Radio 1 (UK)" tvg-logo="https://i.postimg.cc/gjxqjXN2/bbcr1.png" group-title="Âm nhạc",BBC Radio 1 (UK)
+https://as-hls-ww-live.akamaized.net/pool_01505109/live/ww/bbc_radio_one/bbc_radio_one.isml/bbc_radio_one-audio=96000.norewind.m3u8
