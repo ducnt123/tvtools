@@ -1,2 +1,3 @@
 name,url,enabled,proxy
 EPG Việt Nam,https://epg.io.vn/epg.xml,true,tduc
+BBC R1,https://epg.pw/api/epg.xml?lang=en&date=20261024&channel_id=12284,true,none
