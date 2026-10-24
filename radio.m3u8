@@ -21,7 +21,7 @@ https://
 http://
 #EXTINF:-1 tvg-id="vov247" tvg-name="VOV5 English 24/7" tvg-logo="https://media.vovmedia.vn/storage/radio/artwork/vov5-english.webp" group-title="VOV" use-channel-logo="true",VOV5 English 24/7
 https://
-#EXTINF:-1 tvg-id="BBCR1.uk" tvg-name="BBC Radio 1 (UK)" tvg-logo="https://i.postimg.cc/gjxqjXN2/bbcr1.png" group-title="Âm nhạc",BBC Radio 1 (UK)
+#EXTINF:-1 tvg-id="BBCR1.uk" tvg-name="BBC Radio 1" tvg-logo="https://i.postimg.cc/gjxqjXN2/bbcr1.png" group-title="Âm nhạc",BBC Radio 1
 https://as-hls-ww-live.akamaized.net/pool_01505109/live/ww/bbc_radio_one/bbc_radio_one.isml/bbc_radio_one-audio=96000.norewind.m3u8
-#EXTINF:-1 tvg-id="" tvg-name="Heart 10s (UK)" tvg-logo="https://fzteobupcutxwmtdfblj.supabase.co/storage/v1/object/public/channel-logos/18b1cbd9-d306-4a2b-8c1d-5503a798ad11/09eb9408-7bb5-402b-b5b6-f971a2868fac.png" group-title="Âm nhạc" use-channel-logo="true",Heart 10s (UK)
+#EXTINF:-1 tvg-id="heart-10s-uk-" tvg-name="Heart 10s" tvg-logo="https://fzteobupcutxwmtdfblj.supabase.co/storage/v1/object/public/channel-logos/18b1cbd9-d306-4a2b-8c1d-5503a798ad11/b61d890a-2bb6-42a9-af18-d12e80d34500.png" group-title="Âm nhạc" use-channel-logo="true",Heart 10s
 https://icecast.thisisdax.com/Heart10sMP3
