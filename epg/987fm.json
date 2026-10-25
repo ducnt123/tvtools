@@ -1,1 +1,164 @@
-
+{
+  "_guide": "DỮ LIỆU MẪU, KHÔNG PHẢI LỊCH THẬT. Thay id bằng tvg-id của kênh TV/Radio; thêm URL raw tệp này vào Nguồn EPG, bật nguồn và tắt proxy. Khóa trong weekly là ngày áp dụng lịch: một ngày (mon), khoảng ngày (mon-fri) hoặc nhiều ngày (sat,sun) — dùng khoảng/danh sách để gộp các ngày có cùng lịch, khỏi nhập lặp lại. mon=thứ Hai … sun=Chủ nhật. Lịch tự lặp mỗi tuần; ngày không có khóa nào thì không có lịch. start/end dạng HH:mm; end nhỏ hơn start nghĩa là kết thúc hôm sau. description, poster (URL ảnh) và logo (URL logo kênh) tùy chọn. Không đặt chương trình chồng giờ. Không dùng comment hoặc dấu phẩy thừa trong JSON.",
+  "version": 1,
+  "timezone": "+07:00",
+  "channels": [
+    {
+      "id": "987fm.sg",
+      "name": "987FM",
+      "logo": "https://static.melisten.sg/images/station/987_logo.png",
+      "weekly": {
+        "mon-fri": [
+          {
+            "start": "05:00",
+            "end": "09:00",
+            "title": "The Shock Circuit",
+            "description": "DJ: Sonia Chew & Joakim Gomez"
+          },
+          {
+            "start": "09:00",
+            "end": "13:00",
+            "title": "Lunch Date",
+            "description": "DJ: Ann Nicole Ng"
+          },
+          {
+            "start": "13:00",
+            "end": "16:00",
+            "title": "The Halftime Show",
+            "description": "DJ: Josh & Georgina"
+          },
+          {
+            "start": "16:00",
+            "end": "19:00",
+            "title": "Drive Thru",
+            "description": "DJ: Louisa Kan"
+          }
+        ],
+        "mon-thu": [
+          {
+            "start": "19:00",
+            "end": "23:00",
+            "title": "The Down Low",
+            "description": "DJ: Germaine Tan & Avery Aloysius"
+          },
+          {
+            "start": "23:00",
+            "end": "05:00",
+            "title": "Singapore's No. 1 Hit Music Station",
+            "description": "DJ: Non-stop Music"
+          }
+        ],
+        "fri": [
+          {
+            "start": "19:00",
+            "end": "21:00",
+            "title": "The Down Low",
+            "description": "DJ: Germaine Tan & Avery Aloysius"
+          },
+          {
+            "start": "21:00",
+            "end": "22:00",
+            "title": "987 Top 10 At 10",
+            "description": "DJ: Germaine Tan & Avery Aloysius"
+          },
+          {
+            "start": "22:00",
+            "end": "23:00",
+            "title": "The Down Low",
+            "description": "DJ: Germaine Tan & Avery Aloysius"
+          },
+          {
+            "start": "23:00",
+            "end": "06:00",
+            "title": "Singapore's No. 1 Hit Music Station",
+            "description": "DJ: Non-stop Music"
+          }
+        ],
+        "sat,sun": [
+          {
+            "start": "20:00",
+            "end": "21:00",
+            "title": "Indiego Takes Over 987",
+            "description": "DJ: Joakim Gomez & KrystaJoy"
+          }
+        ],
+        "sat": [
+          {
+            "start": "06:00",
+            "end": "09:00",
+            "title": "On 987, This is...",
+            "description": "DJ: Sonia Chew & Joakim Gomez"
+          },
+          {
+            "start": "09:00",
+            "end": "13:00",
+            "title": "On 987, This is...",
+            "description": "DJ: Josh"
+          },
+          {
+            "start": "13:00",
+            "end": "17:00",
+            "title": "On 987, This is...",
+            "description": "DJ: Georgina"
+          },
+          {
+            "start": "17:00",
+            "end": "20:00",
+            "title": "On 987, This is...",
+            "description": "DJ: Ann Nicole Ng"
+          },
+          {
+            "start": "21:00",
+            "end": "22:00",
+            "title": "987 Anthems",
+            "description": "DJ: DJ Kiara"
+          },
+          {
+            "start": "22:00",
+            "end": "06:00",
+            "title": "Singapore's No. 1 Hit Music Station",
+            "description": "DJ: Non-stop Music"
+          }
+        ],
+        "sun": [
+          {
+            "start": "06:00",
+            "end": "09:00",
+            "title": "On 987, This is...",
+            "description": "DJ: Georgina"
+          },
+          {
+            "start": "09:00",
+            "end": "13:00",
+            "title": "On 987, This is...",
+            "description": "DJ: Lex"
+          },
+          {
+            "start": "13:00",
+            "end": "17:00",
+            "title": "On 987, This is...",
+            "description": "DJ: Qistina"
+          },
+          {
+            "start": "17:00",
+            "end": "19:00",
+            "title": "987 Top 10 At 10 (Repeat)",
+            "description": "DJ: Germaine Tan & Avery Aloysius"
+          },
+          {
+            "start": "19:00",
+            "end": "20:00",
+            "title": "On 987, This is...",
+            "description": "DJ: Germaine Tan & Avery Aloysius"
+          },
+          {
+            "start": "21:00",
+            "end": "05:00",
+            "title": "Singapore's No. 1 Hit Music Station",
+            "description": "DJ: Non-stop Music"
+          }
+        ]
+      }
+    }
+  ]
+}
