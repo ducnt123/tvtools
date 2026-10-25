@@ -69,44 +69,13 @@
           },
           {
             "start": "23:00",
-            "end": "06:00",
+            "end": "21:00",
             "title": "Singapore's No. 1 Hit Music Station",
             "description": "DJ: Non-stop Music"
           }
         ],
-        "sat,sun": [
-          {
-            "start": "20:00",
-            "end": "21:00",
-            "title": "Indiego Takes Over 987",
-            "description": "DJ: Joakim Gomez & KrystaJoy"
-          }
-        ],
+
         "sat": [
-          {
-            "start": "06:00",
-            "end": "09:00",
-            "title": "On 987, This is...",
-            "description": "DJ: Sonia Chew & Joakim Gomez"
-          },
-          {
-            "start": "09:00",
-            "end": "13:00",
-            "title": "On 987, This is...",
-            "description": "DJ: Josh"
-          },
-          {
-            "start": "13:00",
-            "end": "17:00",
-            "title": "On 987, This is...",
-            "description": "DJ: Georgina"
-          },
-          {
-            "start": "17:00",
-            "end": "20:00",
-            "title": "On 987, This is...",
-            "description": "DJ: Ann Nicole Ng"
-          },
           {
             "start": "21:00",
             "end": "22:00",
@@ -114,8 +83,8 @@
             "description": "DJ: DJ Kiara"
           },
           {
-            "start": "22:00",
-            "end": "06:00",
+            "start": "23:00",
+            "end": "21:00",
             "title": "Singapore's No. 1 Hit Music Station",
             "description": "DJ: Non-stop Music"
           }
@@ -129,9 +98,9 @@
           },
           {
             "start": "23:00",
-            "end": "21:00",
+            "end": "05:00",
             "title": "Singapore's No. 1 Hit Music Station",
-            "description": "DJ: Non-stop Music"
+            "description": "Non-stop Music"
           }
         ]
       }
