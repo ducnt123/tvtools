@@ -2,3 +2,4 @@ name,url,enabled,proxy
 EPG Việt Nam,https://epg.io.vn/epg.xml,true,tduc
 BBC R1,https://epg.pw/api/epg.xml?lang=en&date=20261024&channel_id=12284,false,none
 UK Freeview,https://raw.githubusercontent.com/dp247/Freeview-EPG/master/epg.xml,true,none
+987FM,https://raw.githubusercontent.com/ducnt123/tvtools/refs/heads/main/epg/987fm.json,true,none
