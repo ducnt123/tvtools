@@ -1,5 +1,5 @@
 {
-  "_guide": "DỮ LIỆU MẪU, KHÔNG PHẢI LỊCH THẬT. Thay id bằng tvg-id của kênh TV/Radio; thêm URL raw tệp này vào Nguồn EPG, bật nguồn và tắt proxy. mon=thứ Hai, tue=thứ Ba, wed=thứ Tư, thu=thứ Năm, fri=thứ Sáu, sat=thứ Bảy, sun=Chủ nhật. Lịch tự lặp mỗi tuần; ngày [] không có lịch. start/end dạng HH:mm; end nhỏ hơn start nghĩa là kết thúc hôm sau. description, poster (URL ảnh) và logo (URL logo kênh) tùy chọn. Không đặt chương trình chồng giờ. Không dùng comment hoặc dấu phẩy thừa trong JSON.",
+  "_guide": "DỮ LIỆU MẪU, KHÔNG PHẢI LỊCH THẬT. Thay id bằng tvg-id của kênh TV/Radio; thêm URL raw tệp này vào Nguồn EPG, bật nguồn và tắt proxy. Khóa trong weekly là ngày áp dụng lịch: một ngày (mon), khoảng ngày (mon-fri) hoặc nhiều ngày (sat,sun) — dùng khoảng/danh sách để gộp các ngày có cùng lịch, khỏi nhập lặp lại. mon=thứ Hai … sun=Chủ nhật. Lịch tự lặp mỗi tuần; ngày không có khóa nào thì không có lịch. start/end dạng HH:mm; end nhỏ hơn start nghĩa là kết thúc hôm sau. description, poster (URL ảnh) và logo (URL logo kênh) tùy chọn. Không đặt chương trình chồng giờ. Không dùng comment hoặc dấu phẩy thừa trong JSON.",
   "version": 1,
   "timezone": "+07:00",
   "channels": [
@@ -7,61 +7,15 @@
       "id": "demo-radio",
       "name": "Radio mẫu — thay bằng kênh của bạn",
       "weekly": {
-        "mon": [
-          {
-            "start": "06:00",
-            "end": "09:00",
-            "title": "Chào buổi sáng thứ Hai",
-            "description": "Chương trình minh họa cho lịch ngày thứ Hai."
-          }
+        "mon-fri": [
+          {"start":"06:00","end":"09:00","title":"Chào buổi sáng","description":"Lịch chung cho cả 5 ngày trong tuần, chỉ cần nhập một lần."},
+          {"start":"12:00","end":"13:00","title":"Tin trưa"}
         ],
-        "tue": [
-          {
-            "start": "06:00",
-            "end": "09:00",
-            "title": "Âm nhạc thứ Ba"
-          }
-        ],
-        "wed": [
-          {
-            "start": "06:00",
-            "end": "09:00",
-            "title": "Giao lưu thứ Tư"
-          }
-        ],
-        "thu": [
-          {
-            "start": "06:00",
-            "end": "09:00",
-            "title": "Chuyện kể thứ Năm"
-          }
-        ],
-        "fri": [
-          {
-            "start": "06:00",
-            "end": "09:00",
-            "title": "Điểm hẹn thứ Sáu"
-          }
-        ],
-        "sat": [
-          {
-            "start": "08:00",
-            "end": "10:00",
-            "title": "Âm nhạc cuối tuần"
-          }
+        "sat,sun": [
+          {"start":"08:00","end":"10:00","title":"Âm nhạc cuối tuần"}
         ],
         "sun": [
-          {
-            "start": "08:00",
-            "end": "10:00",
-            "title": "Sáng Chủ nhật"
-          },
-          {
-            "start": "23:00",
-            "end": "01:00",
-            "title": "Nhạc đêm",
-            "description": "Ví dụ chương trình qua nửa đêm sang thứ Hai."
-          }
+          {"start":"23:00","end":"01:00","title":"Nhạc đêm","description":"Ví dụ chương trình qua nửa đêm sang thứ Hai."}
         ]
       }
     },
@@ -69,49 +23,15 @@
       "id": "demo-tv",
       "name": "TV mẫu — thay bằng kênh của bạn",
       "weekly": {
-        "mon": [
-          {
-            "start": "19:00",
-            "end": "20:00",
-            "title": "Tạp chí thứ Hai"
-          }
-        ],
-        "tue": [
-          {
-            "start": "19:00",
-            "end": "20:00",
-            "title": "Khám phá thứ Ba"
-          }
-        ],
-        "wed": [
-          {
-            "start": "19:00",
-            "end": "20:00",
-            "title": "Văn hóa thứ Tư"
-          }
-        ],
-        "thu": [
-          {
-            "start": "19:00",
-            "end": "20:00",
-            "title": "Thể thao thứ Năm"
-          }
+        "mon-thu": [
+          {"start":"19:00","end":"20:00","title":"Tạp chí tối"}
         ],
         "fri": [
-          {
-            "start": "19:00",
-            "end": "20:00",
-            "title": "Giải trí thứ Sáu"
-          }
+          {"start":"19:00","end":"20:00","title":"Giải trí thứ Sáu"}
         ],
         "sat": [
-          {
-            "start": "19:00",
-            "end": "21:00",
-            "title": "Phim cuối tuần"
-          }
-        ],
-        "sun": []
+          {"start":"19:00","end":"21:00","title":"Phim cuối tuần"}
+        ]
       }
     }
   ]
