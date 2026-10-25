@@ -122,38 +122,14 @@
         ],
         "sun": [
           {
-            "start": "06:00",
-            "end": "09:00",
+            "start": "21:00",
+            "end": "23:00",
             "title": "On 987, This is...",
             "description": "DJ: Georgina"
           },
           {
-            "start": "09:00",
-            "end": "13:00",
-            "title": "On 987, This is...",
-            "description": "DJ: Lex"
-          },
-          {
-            "start": "13:00",
-            "end": "17:00",
-            "title": "On 987, This is...",
-            "description": "DJ: Qistina"
-          },
-          {
-            "start": "17:00",
-            "end": "19:00",
-            "title": "987 Top 10 At 10 (Repeat)",
-            "description": "DJ: Germaine Tan & Avery Aloysius"
-          },
-          {
-            "start": "19:00",
-            "end": "20:00",
-            "title": "On 987, This is...",
-            "description": "DJ: Germaine Tan & Avery Aloysius"
-          },
-          {
-            "start": "21:00",
-            "end": "05:00",
+            "start": "23:00",
+            "end": "21:00",
             "title": "Singapore's No. 1 Hit Music Station",
             "description": "DJ: Non-stop Music"
           }
