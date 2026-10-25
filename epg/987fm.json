@@ -1,5 +1,5 @@
 {
-  "_guide": "DỮ LIỆU MẪU, KHÔNG PHẢI LỊCH THẬT. Thay id bằng tvg-id của kênh TV/Radio; thêm URL raw tệp này vào Nguồn EPG, bật nguồn và tắt proxy. Khóa trong weekly là ngày áp dụng lịch: một ngày (mon), khoảng ngày (mon-fri) hoặc nhiều ngày (sat,sun) — dùng khoảng/danh sách để gộp các ngày có cùng lịch, khỏi nhập lặp lại. mon=thứ Hai … sun=Chủ nhật. Lịch tự lặp mỗi tuần; ngày không có khóa nào thì không có lịch. start/end dạng HH:mm; end nhỏ hơn start nghĩa là kết thúc hôm sau. description, poster (URL ảnh) và logo (URL logo kênh) tùy chọn. Không đặt chương trình chồng giờ. Không dùng comment hoặc dấu phẩy thừa trong JSON.",
+  "_guide": "in sample file",
   "version": 1,
   "timezone": "+07:00",
   "channels": [
