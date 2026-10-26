@@ -12,6 +12,10 @@
     "987fm.sg": {
       "trackApi": "https://np.tritondigital.com/public/nowplaying?mountName=987FMAAC&numberToFetch=2&eventType=track",
       "useDefaultThumbnail": false
+    },
+    "vov1": {
+      "defaultThumbnail": "https://media.vovmedia.vn/storage/radio/artwork/vov1.webp",
+      "useDefaultThumbnail": true
     }
   }
 }
