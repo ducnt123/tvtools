@@ -3,7 +3,8 @@
   "channels": {
     "heart-10s-uk-": {
       "scheduleApi": "https://core-search.radioplayer.cloud/826/qp/v4/schedule?rpId=1017&callback=cb_schedule",
-      "useDefaultThumbnail": false
+      "useDefaultThumbnail": false,
+      "trackApi": "https://media-ssl.musicradio.com/Heart10s"
     },
     "BBCR1.uk": {
       "trackApi": "https://rms.api.bbc.co.uk/v2/services/bbc_radio_one/segments/latest?experience=domestic&offset=0&limit=4",
