@@ -10,8 +10,10 @@
       "useDefaultThumbnail": false
     },
     "987fm.sg": {
+      "scheduleApi": "https://raw.githubusercontent.com/ducnt123/tvtools/refs/heads/main/epg/987fm.json",
       "trackApi": "https://np.tritondigital.com/public/nowplaying?mountName=987FMAAC&numberToFetch=2&eventType=track",
-      "useDefaultThumbnail": false
+      "defaultThumbnail": "https://i.postimg.cc/sXfgd5Hd/987fm.jpg",
+      "useDefaultThumbnail": true
     },
     "vov1": {
       "defaultThumbnail": "https://media.vovmedia.vn/storage/radio/artwork/vov1.webp",
