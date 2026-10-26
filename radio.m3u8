@@ -1,5 +1,5 @@
 #EXTM3U
-#EXTINF:-1 tvg-id="vov1" tvg-name="VOV1" tvg-logo="https://media.vovmedia.vn/storage/radio/artwork/vov1.webp" group-title="VOV" use-channel-logo="true",VOV1
+#EXTINF:-1 tvg-id="vov1" tvg-name="VOV1" tvg-logo="https://i.postimg.cc/c45cjmHt/vov1.webp" group-title="VOV" use-channel-logo="true",VOV1
 https://audio-lss.vov.vn/live/vov1.m3u8
 #EXTINF:-1 tvg-id="vov2" tvg-name="VOV2" tvg-logo="https://media.vovmedia.vn/storage/radio/artwork/vov2.webp" group-title="VOV" use-channel-logo="true",VOV2
 https://audio-lss.vov.vn/live/vov2.m3u8
