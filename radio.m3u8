@@ -24,6 +24,6 @@ https://
 #EXTINF:-1 tvg-id="BBCR1.uk" tvg-name="BBC Radio 1" tvg-logo="https://i.postimg.cc/gjxqjXN2/bbcr1.png" group-title="Âm nhạc",BBC Radio 1
 https://as-hls-ww-live.akamaized.net/pool_01505109/live/ww/bbc_radio_one/bbc_radio_one.isml/bbc_radio_one-audio=96000.norewind.m3u8
 #EXTINF:-1 tvg-id="heart-10s-uk-" tvg-name="Heart 10s" tvg-logo="https://i.postimg.cc/Ss2qZb49/heart10s.png" group-title="Âm nhạc" use-channel-logo="true",Heart 10s
-https://media-ice.musicradio.com/Heart10s
+https://media-ssl.musicradio.com/Heart10s
 #EXTINF:-1 tvg-id="987fm.sg" tvg-name="987 FM" tvg-logo="https://i.postimg.cc/pdsgbGCC/987.png" group-title="Âm nhạc" use-channel-logo="true",987 FM
 https://playerservices.streamtheworld.com/api/livestream-redirect/987FMAAC.aac
