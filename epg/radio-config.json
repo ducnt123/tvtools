@@ -7,7 +7,8 @@
     },
     "BBCR1.uk": {
       "trackApi": "https://rms.api.bbc.co.uk/v2/services/bbc_radio_one/segments/latest?experience=domestic&offset=0&limit=4",
-      "useDefaultThumbnail": false
+      "defaultThumbnail": "https://i.postimg.cc/439yZzgH/bbcr1-thumb.png",
+      "useDefaultThumbnail": true
     },
     "987fm.sg": {
       "scheduleApi": "https://raw.githubusercontent.com/ducnt123/tvtools/refs/heads/main/epg/987fm.json",
