@@ -15,7 +15,7 @@ http://media.kythuatvov.vn:1936/live/VOV4_MT.sdp/playlist.m3u8
 https://str.vov.gov.vn/vovlive/vov4.TayNguyen.sdp_aac/playlist.m3u8
 #EXTINF:-1 tvg-id="vov4hcm" tvg-name="VOV4 TP.HCM" tvg-logo="https://i.imgur.com/nINUY5w.png" group-title="VOV" use-channel-logo="true",VOV4 TP.HCM
 http://media.kythuatvov.vn:1936/live/VOV4_HCM.sdp/chunklist.m3u8
-#EXTINF:-1 tvg-id="vov4scl" tvg-name="VOV4 ĐBSCL" tvg-logo="https://media.vovmedia.vn/storage/radio/artwork/vov4-dong-bang-song-cuu-long.webp" group-title="VOV" use-channel-logo="true",VOV4 ĐBSCL
+#EXTINF:-1 tvg-id="vov4scl" tvg-name="VOV4 ĐBSCL" tvg-logo="https://i.imgur.com/nINUY5w.png" group-title="VOV" use-channel-logo="true",VOV4 ĐBSCL
 http://media.kythuatvov.vn:1936/live/VOV4_CT.sdp/chunklist.m3u8
 #EXTINF:-1 tvg-id="vov5" tvg-name="VOV5" tvg-logo="https://i.imgur.com/wd9CDkT.png" group-title="VOV" use-channel-logo="true",VOV5
 https://str.vov.gov.vn/vovlive/vov5.sdp_aac/chunklist.m3u8
