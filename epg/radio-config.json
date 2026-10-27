@@ -40,6 +40,10 @@
     "vov4tn": {
       "defaultThumbnail": "https://media.vovmedia.vn/storage/radio/artwork/vov4-tay-nguyen.webp",
       "useDefaultThumbnail": true
+    },
+    "vov4hcm": {
+      "defaultThumbnail": "https://media.vovmedia.vn/storage/radio/artwork/vov4-tp-hcm.webp",
+      "useDefaultThumbnail": true
     }
   }
 }
