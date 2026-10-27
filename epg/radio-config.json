@@ -44,6 +44,10 @@
     "vov4hcm": {
       "defaultThumbnail": "https://media.vovmedia.vn/storage/radio/artwork/vov4-tp-hcm.webp",
       "useDefaultThumbnail": true
+    },
+    "vov5": {
+      "defaultThumbnail": "https://media.vovmedia.vn/storage/radio/artwork/vov5.webp",
+      "useDefaultThumbnail": true
     }
   }
 }
