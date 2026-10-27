@@ -26,7 +26,12 @@
       "useDefaultThumbnail": true
     },
     "vov3": {
-      "defaultThumbnail": "https://media.vovmedia.vn/storage/radio/artwork/vov3.webp"
+      "defaultThumbnail": "https://media.vovmedia.vn/storage/radio/artwork/vov3.webp",
+      "useDefaultThumbnail": true
+    },
+    "vov4tb": {
+      "defaultThumbnail": "https://media.vovmedia.vn/storage/radio/artwork/vov4-tay-bac-dong-bac.webp",
+      "useDefaultThumbnail": true
     }
   }
 }
