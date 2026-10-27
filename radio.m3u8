@@ -19,8 +19,8 @@ http://media.kythuatvov.vn:1936/live/VOV4_HCM.sdp/chunklist.m3u8
 http://media.kythuatvov.vn:1936/live/VOV4_CT.sdp/chunklist.m3u8
 #EXTINF:-1 tvg-id="vov5" tvg-name="VOV5" tvg-logo="https://i.imgur.com/wd9CDkT.png" group-title="VOV" use-channel-logo="true",VOV5
 https://str.vov.gov.vn/vovlive/vov5.sdp_aac/chunklist.m3u8
-#EXTINF:-1 tvg-id="vov247" tvg-name="VOV5 English 24/7" tvg-logo="https://media.vovmedia.vn/storage/radio/artwork/vov5-english.webp" group-title="VOV" use-channel-logo="true",VOV5 English 24/7
-https://
+#EXTINF:-1 tvg-id="vov247" tvg-name="VOV5 English 24/7" tvg-logo="https://i.imgur.com/OgdY02B.png" group-title="VOV" use-channel-logo="true",VOV5 English 24/7
+https://str.vov.gov.vn/vovlive/vov247vov5English.sdp_aac/playlist.m3u8
 #EXTINF:-1 tvg-id="BBCR1.uk" tvg-name="BBC Radio 1" tvg-logo="https://i.postimg.cc/gjxqjXN2/bbcr1.png" group-title="Âm nhạc",BBC Radio 1
 https://as-hls-ww-live.akamaized.net/pool_01505109/live/ww/bbc_radio_one/bbc_radio_one.isml/bbc_radio_one-audio=96000.norewind.m3u8
 #EXTINF:-1 tvg-id="heart-10s-uk-" tvg-name="Heart 10s" tvg-logo="https://i.postimg.cc/Ss2qZb49/heart10s.png" group-title="Âm nhạc" use-channel-logo="true",Heart 10s
