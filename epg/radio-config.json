@@ -32,6 +32,10 @@
     "vov4tb": {
       "defaultThumbnail": "https://media.vovmedia.vn/storage/radio/artwork/vov4-tay-bac-dong-bac.webp",
       "useDefaultThumbnail": true
+    },
+    "vov4mt": {
+      "defaultThumbnail": "https://media.vovmedia.vn/storage/radio/artwork/vov4-mien-trung.webp",
+      "useDefaultThumbnail": true
     }
   }
 }
