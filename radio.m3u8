@@ -1,9 +1,9 @@
 #EXTM3U
-#EXTINF:-1 tvg-id="vov1" tvg-name="VOV1" tvg-logo="https://i.postimg.cc/MGKw3qrm/vov1.png" group-title="VOV" use-channel-logo="true",VOV1
+#EXTINF:-1 tvg-id="vov1" tvg-name="VOV1" tvg-logo="https://i.imgur.com/jFOE43P.png" group-title="VOV" use-channel-logo="true",VOV1
 https://audio-lss.vov.vn/live/vov1.m3u8
-#EXTINF:-1 tvg-id="vov2" tvg-name="VOV2" tvg-logo="https://media.vovmedia.vn/storage/radio/artwork/vov2.webp" group-title="VOV" use-channel-logo="true",VOV2
+#EXTINF:-1 tvg-id="vov2" tvg-name="VOV2" tvg-logo="https://i.imgur.com/LW3Va45.png" group-title="VOV" use-channel-logo="true",VOV2
 https://audio-lss.vov.vn/live/vov2.m3u8
-#EXTINF:-1 tvg-id="vov3" tvg-name="VOV3" tvg-logo="https://media.vovmedia.vn/storage/radio/artwork/vov3.webp" group-title="VOV" use-channel-logo="true",VOV3
+#EXTINF:-1 tvg-id="vov3" tvg-name="VOV3" tvg-logo="https://i.imgur.com/O0jiqYa.png" group-title="VOV" use-channel-logo="true",VOV3
 https://audio-lss.vov.vn/live/vov3.m3u8
 #EXTINF:-1 tvg-id="vovsonata" tvg-name="VOV Sonata" tvg-logo="https://media.vov.vn/vov-static/sonata/logo-sonata.png" group-title="VOV" use-channel-logo="true",VOV Sonata
 https://audio-lss.vov.vn/live/sonata.m3u8
