@@ -36,6 +36,10 @@
     "vov4mt": {
       "defaultThumbnail": "https://media.vovmedia.vn/storage/radio/artwork/vov4-mien-trung.webp",
       "useDefaultThumbnail": true
+    },
+    "vov4tn": {
+      "defaultThumbnail": "https://media.vovmedia.vn/storage/radio/artwork/vov4-tay-nguyen.webp",
+      "useDefaultThumbnail": true
     }
   }
 }
