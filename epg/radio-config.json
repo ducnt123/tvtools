@@ -52,6 +52,10 @@
     "vov247": {
       "defaultThumbnail": "https://media.vovmedia.vn/storage/radio/artwork/vov5-english.webp",
       "useDefaultThumbnail": true
+    },
+    "vov4scl": {
+      "defaultThumbnail": "https://media.vovmedia.vn/storage/radio/artwork/vov4-dong-bang-song-cuu-long.webp",
+      "useDefaultThumbnail": true
     }
   }
 }
