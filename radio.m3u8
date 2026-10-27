@@ -7,7 +7,7 @@ https://audio-lss.vov.vn/live/vov2.m3u8
 https://audio-lss.vov.vn/live/vov3.m3u8
 #EXTINF:-1 tvg-id="vovsonata" tvg-name="VOV Sonata" tvg-logo="https://media.vov.vn/vov-static/sonata/logo-sonata.png" group-title="VOV" use-channel-logo="true",VOV Sonata
 https://audio-lss.vov.vn/live/sonata.m3u8
-#EXTINF:-1 tvg-id="vov4tb" tvg-name="VOV4 Tây Bắc & Đông Bắc" tvg-logo="https://media.vovmedia.vn/storage/radio/artwork/vov4-tay-bac-dong-bac.webp" group-title="VOV" use-channel-logo="true",VOV4 Tây Bắc & Đông Bắc
+#EXTINF:-1 tvg-id="vov4tb" tvg-name="VOV4 Tây Bắc & Đông Bắc" tvg-logo="https://i.imgur.com/nINUY5w.png" group-title="VOV" use-channel-logo="true",VOV4 Tây Bắc & Đông Bắc
 http://
 #EXTINF:-1 tvg-id="vov4mt" tvg-name="VOV4 Miền Trung" tvg-logo="https://media.vovmedia.vn/storage/radio/artwork/vov4-mien-trung.webp" group-title="VOV" use-channel-logo="true",VOV4 Miền Trung
 https://
