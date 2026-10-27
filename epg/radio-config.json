@@ -48,6 +48,10 @@
     "vov5": {
       "defaultThumbnail": "https://media.vovmedia.vn/storage/radio/artwork/vov5.webp",
       "useDefaultThumbnail": true
+    },
+    "vov247": {
+      "defaultThumbnail": "https://media.vovmedia.vn/storage/radio/artwork/vov5-english.webp",
+      "useDefaultThumbnail": true
     }
   }
 }
