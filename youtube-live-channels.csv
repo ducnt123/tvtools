@@ -1,17 +1,17 @@
-id,name,logo,url
-vtv1hd,VTV1,https://vtvgo-next-assets.vtvdigital.vn/prod/images/channel/20260905/2026090510/df56581896-vtv1.webp,https://vtvgolive-failover.vtvdigital.vn/hls/vtv/live/vtv1/free/master.m3u8
-vtv5hd,VTV5,https://vtvgo-next-assets.vtvdigital.vn/prod/images/channel/20260905/2026090510/fdf2557ea9-vtv5.webp,https://live.fptplay53.net/live/media/vtv5/live247-hls-avc/vtv5-avc1_5600000=10000-mp4a_131600=20000.m3u8
-vietnamtoday,Vietnam Today,https://vtvgo-assets.vtvdigital.vn/assets/images/v2/channel/20250906/2025090623/vvcemcZDle-VIETNAMTODAY-KENHVTVgo-150x90copy.webp,https://live.fptplay53.net/fnxhd1/vntoday_vhls.smil/chunklist_b5000000.m3u8
-antvhd,ANTV,https://upload.wikimedia.org/wikipedia/commons/a/a8/Logoantv.png,https://live.fptplay53.net/fnxhd2/anninhtv_vhls.smil/chunklist_b5000000.m3u8
-qpvnhd,QPVN,https://upload.wikimedia.org/wikipedia/vi/5/5d/QPVN.png,https://live.fptplay53.net/fnxhd2/quocphongvnhd_vhls.smil/chunklist_b5000000.m3u8
-france24eng,France 24 English,https://raw.githubusercontent.com/tv-logo/tv-logos/refs/heads/main/countries/international/france-24-english-int.png,https://dash3.antik.sk/live/test_france24_eng/playlist.m3u8
-nhkworld,NHK World - Japan,https://raw.githubusercontent.com/tv-logo/tv-logos/refs/heads/main/countries/international/nhk-world-japan-int.png,https://media-osa.hls.nhkworld.jp/hls/w/live/master.m3u8
-cna,CNA,https://upload.wikimedia.org/wikipedia/commons/8/83/CNA_new_logo.svg,https://d2e1asnsl7br7b.cloudfront.net/7782e205e72f43aeb4a48ec97f66ebbe/index.m3u8
-hls-redbull,Red Bull TV,https://i.postimg.cc/j2ZcgH4Q/redbull.png,https://dms.redbull.tv/v3/linear-borb/eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjYXRlZ29yeSI6InBlcnNvbmFsX2NvbXB1dGVyIiwiY291bnRyeV9jb2RlIjoidXMiLCJleHBpcmVzIjoiMjAxNy0wOS0xNlQxNzo0NjowMy45NjM0NjI4NDJaIiwib3NfZmFtaWx5IjoiaHR0cCIsInJlbW90ZV9pcCI6IjEwLjE1Ny4xMTIuMTQ4IiwidWEiOiJNb3ppbGxhLzUuMCAoTWFjaW50b3NoOyBJbnRlbCBNYWMgT1MgWCAxMF8xMl81KSBBcHBsZVdlYktpdC82MDMuMi40IChLSFRNTCwgbGlrZSBHZWNrbykgVmVyc2lvbi8xMC4xLjEgU2FmYXJpLzYwMy4yLjQiLCJ1aWQiOiJkOGZiZWYzMC0yZDhhLTQwYTUtOGNjNy0wNzgxNGJhMTliNzMifQ.Q_38FNpW3so5yrA5FQt9qBuix3dTulKpb6uQ0dRjrtY/playlist.m3u8
-stingray-naturescape,Stingray Naturescape,https://i.imgur.com/882kd90.png,https://lotus.stingray.com/manifest/naturescape-a003-montreal/samsungtvplus/master.m3u8
-plex.tv.beIN.SPORTS.XTRA.plex,beIN SPORTS XTRA,https://schedulesdirect-api20141201-logos.s3.dualstack.us-east-1.amazonaws.com/stationLogos/s113143_dark_360w_270h.png,https://bein-xtra-bein.amagi.tv/playlist.m3u8
-yt-tomorrowland,Tomorrowland One World Radio,https://i.postimg.cc/cHCPdzgv/owr.png,https://www.youtube.com/embed/WpaGUf21KRo?&autoplay=1
-yt-phineas-ferb-s1,Phineas And Ferb S1,https://upload.wikimedia.org/wikipedia/en/6/6e/Phineas_and_Ferb_logo.svg,https://www.youtube.com/embed/_HviSyC7zSU?&autoplay=1
-hls-lovenature,Love Nature,https://raw.githubusercontent.com/tv-logo/tv-logos/refs/heads/main/countries/canada/love-nature-white-ca.png,https://aegis-cloudfront-1.tubi.video/6d6d0f24-8445-4b4c-bdf6-44f9e38beaa4/playlist.m3u8
-yt-tom-and-jerry,Tom and Jerry: Golden Era,https://beam-images.warnermediacdn.com/BEAM_LWM_DELIVERABLES/a500fccc-7dbe-45fb-91d4-023deb64bbc0/2a8a16b70341edef639588982379c0c251c6f961.jpg?host=wbd-images.prod-vod.h264.io&partner=beamcom&w=300&w=300,https://www.youtube.com/embed/400k2SKoeh4?&autoplay=1
-hls-test,Test Stream HLS1,,https://demo.unified-streaming.com/k8s/features/stable/video/tears-of-steel/tears-of-steel.ism/.m3u8
+id,name,logo,url,disabled
+vtv1hd,VTV1,https://vtvgo-next-assets.vtvdigital.vn/prod/images/channel/20260905/2026090510/df56581896-vtv1.webp,https://vtvgolive-failover.vtvdigital.vn/hls/vtv/live/vtv1/free/master.m3u8,
+vtv5hd,VTV5,https://vtvgo-next-assets.vtvdigital.vn/prod/images/channel/20260905/2026090510/fdf2557ea9-vtv5.webp,https://freem3u.xyz/api/live/play.m3u8?vid=110,
+vietnamtoday,Vietnam Today,https://vtvgo-assets.vtvdigital.vn/assets/images/v2/channel/20250906/2025090623/vvcemcZDle-VIETNAMTODAY-KENHVTVgo-150x90copy.webp,https://amagi-live.ondemandkorea.com/amgplt0456.m3u8,
+antvhd,ANTV,https://upload.wikimedia.org/wikipedia/commons/a/a8/Logoantv.png,https://liveh12.vtvprime.vn/hls/ANNINHTV/index.m3u8,
+qpvnhd,QPVN,https://upload.wikimedia.org/wikipedia/vi/5/5d/QPVN.png,https://qpvn.vn/live/qpvn/master.m3u8,
+france24eng,France 24 English,https://raw.githubusercontent.com/tv-logo/tv-logos/refs/heads/main/countries/international/france-24-english-int.png,https://dash3.antik.sk/live/test_france24_eng/playlist.m3u8,
+nhkworld,NHK World - Japan,https://raw.githubusercontent.com/tv-logo/tv-logos/refs/heads/main/countries/international/nhk-world-japan-int.png,https://media-osa.hls.nhkworld.jp/hls/w/live/master.m3u8,
+cna,CNA,https://upload.wikimedia.org/wikipedia/commons/8/83/CNA_new_logo.svg,https://d2e1asnsl7br7b.cloudfront.net/7782e205e72f43aeb4a48ec97f66ebbe/index.m3u8,
+hls-redbull,Red Bull TV,https://i.postimg.cc/j2ZcgH4Q/redbull.png,https://dms.redbull.tv/v3/linear-borb/eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjYXRlZ29yeSI6InBlcnNvbmFsX2NvbXB1dGVyIiwiY291bnRyeV9jb2RlIjoidXMiLCJleHBpcmVzIjoiMjAxNy0wOS0xNlQxNzo0NjowMy45NjM0NjI4NDJaIiwib3NfZmFtaWx5IjoiaHR0cCIsInJlbW90ZV9pcCI6IjEwLjE1Ny4xMTIuMTQ4IiwidWEiOiJNb3ppbGxhLzUuMCAoTWFjaW50b3NoOyBJbnRlbCBNYWMgT1MgWCAxMF8xMl81KSBBcHBsZVdlYktpdC82MDMuMi40IChLSFRNTCwgbGlrZSBHZWNrbykgVmVyc2lvbi8xMC4xLjEgU2FmYXJpLzYwMy4yLjQiLCJ1aWQiOiJkOGZiZWYzMC0yZDhhLTQwYTUtOGNjNy0wNzgxNGJhMTliNzMifQ.Q_38FNpW3so5yrA5FQt9qBuix3dTulKpb6uQ0dRjrtY/playlist.m3u8,
+stingray-naturescape,Stingray Naturescape,https://i.imgur.com/882kd90.png,https://lotus.stingray.com/manifest/naturescape-a003-montreal/samsungtvplus/master.m3u8,
+plex.tv.beIN.SPORTS.XTRA.plex,beIN SPORTS XTRA,https://schedulesdirect-api20141201-logos.s3.dualstack.us-east-1.amazonaws.com/stationLogos/s113143_dark_360w_270h.png,https://bein-xtra-bein.amagi.tv/playlist.m3u8,
+yt-tomorrowland,Tomorrowland One World Radio,https://i.postimg.cc/cHCPdzgv/owr.png,https://www.youtube.com/embed/WpaGUf21KRo?&autoplay=1,
+yt-phineas-ferb-s1,Phineas And Ferb S1,https://upload.wikimedia.org/wikipedia/en/6/6e/Phineas_and_Ferb_logo.svg,https://www.youtube.com/embed/_HviSyC7zSU?&autoplay=1,
+hls-lovenature,Love Nature,https://raw.githubusercontent.com/tv-logo/tv-logos/refs/heads/main/countries/canada/love-nature-white-ca.png,https://aegis-cloudfront-1.tubi.video/6d6d0f24-8445-4b4c-bdf6-44f9e38beaa4/playlist.m3u8,
+yt-tom-and-jerry,Tom and Jerry: Golden Era,https://beam-images.warnermediacdn.com/BEAM_LWM_DELIVERABLES/a500fccc-7dbe-45fb-91d4-023deb64bbc0/2a8a16b70341edef639588982379c0c251c6f961.jpg?host=wbd-images.prod-vod.h264.io&partner=beamcom&w=300&w=300,https://www.youtube.com/embed/400k2SKoeh4?&autoplay=1,
+hls-test,Test Stream HLS1,,https://demo.unified-streaming.com/k8s/features/stable/video/tears-of-steel/tears-of-steel.ism/.m3u8,
