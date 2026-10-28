@@ -1,4 +1,4 @@
-id,name,logo,type,genre,curatedSlugs,defaultDuration,maxMovies,group,isYTMusic,hideWeb,hideIPTV,url
+id,name,logo,type,genre,curatedSlugs,defaultDuration,maxMovies,group,isYTMusic,hideWeb,hideIPTV,stream-url
 fast-premiere,Stream24 Premiere,https://i.postimg.cc/vmhZ8Lv1/stream24-premiere.png,list-m,phim-chieu-rap,,90,20,Phim,,,,
 fast-m-hanh-dong,Action Movies,https://i.postimg.cc/3wj6GtyC/action-movies.png,genre-m,hanh-dong,,90,20,Phim,,,,
 fast-m-tinh-cam,Romantic Movies,https://i.postimg.cc/bv0MnmGx/romantic-movies.png,list-m,phim-le?category=tinh-cam,,90,20,Phim,,,,
